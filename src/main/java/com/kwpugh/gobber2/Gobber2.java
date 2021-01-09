@@ -52,5 +52,6 @@ public class Gobber2 implements ModInitializer
         	CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, SlotTypePreset.RING.getInfoBuilder().size(4).build());
         	CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, SlotTypePreset.BELT.getInfoBuilder().size(2).build());    		
     	}
+    	
     }
 }
