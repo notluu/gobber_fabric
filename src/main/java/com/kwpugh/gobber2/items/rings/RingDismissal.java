@@ -31,7 +31,8 @@ public class RingDismissal extends Item
 	}
 
 	static double range = Gobber2.CONFIG.GENERAL.ringDismissalRange;
-	static double velocity = Gobber2.CONFIG.GENERAL.rinngDismissalVelocity;
+	static double velocity = Gobber2.CONFIG.GENERAL.ringDismissalVelocity;
+	static double lift = Gobber2.CONFIG.GENERAL.ringDismissalLift;
 	
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
@@ -70,8 +71,7 @@ public class RingDismissal extends Item
     			
     			if(targetEntity instanceof HostileEntity)
     			{
-    				//targetEntity.addVelocity(lookX * velocity, 1.5D, lookZ * velocity);
-    				targetEntity.addVelocity(lookX * velocity, lookY * 1.5D, lookZ * velocity);
+    				targetEntity.addVelocity(lookX * velocity, lookY * lift, lookZ * velocity);
     			}
     		}      	
         }

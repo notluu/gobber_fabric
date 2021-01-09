@@ -72,7 +72,8 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
  		public int ringAboveCooldown = 120;
  		public int ringRepairInterval = 120;
  		public double ringDismissalRange = 8;
- 		public double rinngDismissalVelocity = .2D;
+ 		public double ringDismissalVelocity = 0.2D;
+ 		public double ringDismissalLift = 1.5D;
  		public double ringTravelerLaunch = 3.0;
  		public double ringTravelerCruising = 0.2;
  		

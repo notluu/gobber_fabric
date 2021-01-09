@@ -14,6 +14,7 @@ import com.kwpugh.gobber2.blocks.entities.BlockDefenderEntity;
 import com.kwpugh.gobber2.blocks.entities.BlockHealerEntity;
 import com.kwpugh.gobber2.blocks.entities.BlockMaturatorEntity;
 import com.kwpugh.gobber2.blocks.entities.BlockProtectorEntity;
+import com.kwpugh.gobber2.blocks.entities.BlockTeleporterEntity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricMaterialBuilder;
@@ -34,6 +35,7 @@ public class BlockInit
 	public static BlockEntityType<BlockProtectorEntity> BLOCK_PROTECTOR_ENTITY;
 	public static BlockEntityType<BlockDefenderEntity> BLOCK_DEFENDER_ENTITY;
 	public static BlockEntityType<BlockMaturatorEntity> BLOCK_MATURATOR_ENTITY;
+	public static BlockEntityType<BlockTeleporterEntity> BLOCK_TELEPORTER_ENTITY;
 	
 	
 	public static final Block GOBBER2_LUCKY_BLOCK = new LuckyBlock(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
@@ -114,6 +116,7 @@ public class BlockInit
 		BLOCK_MATURATOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_maturator", BlockEntityType.Builder.create(BlockMaturatorEntity::new, BLOCK_MATURATOR).build(null));
 		BLOCK_PROTECTOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_protector", BlockEntityType.Builder.create(BlockProtectorEntity::new, BLOCK_PROTECTOR).build(null));
 		BLOCK_DEFENDER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_defender", BlockEntityType.Builder.create(BlockDefenderEntity::new, BLOCK_DEFENDER).build(null));
+		BLOCK_TELEPORTER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:gobber2_block_end", BlockEntityType.Builder.create(BlockTeleporterEntity::new, GOBBER2_BLOCK_END).build(null));
 	}
 	
 	

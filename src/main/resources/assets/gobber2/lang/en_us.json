@@ -238,8 +238,8 @@
 	"item.gobber2.gobber2_ring_teleport.tip3": "Sneak + right-click pointing up in the air to clear",
 	"item.gobber2.gobber2_ring_teleport.tip4": "Right-click to teleport",
 	"item.gobber2.gobber2_ring_teleport.tip5": "Stored Loc: %s %s %s %s",
-	"item.gobber2.gobber2_ring_teleport.tip6": "Location set!",
-	"item.gobber2.gobber2_ring_teleport.tip7": "Location already set.",
+	"item.gobber2.gobber2_ring_teleport.tip6": "Location has been set to: %s",
+	"item.gobber2.gobber2_ring_teleport.tip7": "Location already set to: %s",
 	"item.gobber2.gobber2_ring_teleport.tip8": "Location cleared.",
 	"item.gobber2.gobber2_ring_teleport.tip9": "Wrong dimension, try using in: %s",
 	
