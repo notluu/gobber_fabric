@@ -63,17 +63,22 @@ public class RingTeleport extends Item
 		Direction direction = context.getSide();
 		ItemStack stack = context.getPlayer().getMainHandStack();	 
 	 
+	 	if(getPosition(stack) == null && !player.isSneaking())
+    	{
+    		player.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_teleport.tip2")), true);   // not set
+    	}
+	 	
 		if(getPosition(stack) == null && player.isSneaking())
 		{
 			setPosition(stack, world, pos.offset(direction), player);
-			player.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_teleport.tip6", displaySetPosition(stack)).formatted(Formatting.GREEN)), true);   // loc set
+			player.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_teleport.tip6", getLocationString(stack)).formatted(Formatting.GREEN)), true);   // loc set
 					 
 			return ActionResult.SUCCESS;
 		}
 	 
 		if(getPosition(stack) != null)
 		{
-			player.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_teleport.tip7", displaySetPosition(stack)).formatted(Formatting.YELLOW)), true);    // loc already set
+			player.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_teleport.tip7", getLocationString(stack)).formatted(Formatting.YELLOW)), true);    // loc already set
 			
 			return ActionResult.SUCCESS;
 		}
@@ -115,11 +120,8 @@ public class RingTeleport extends Item
 	//Set position and dimension in the NBT
 	public static void setPosition(ItemStack stack, World world, BlockPos pos, PlayerEntity player)
 	{
-		if(world.isClient)
-		{
-			return;
-		}
-	 
+		if(world.isClient) return;
+		
 		CompoundTag tags;
 	 
 		if (!stack.hasTag())
@@ -190,7 +192,7 @@ public class RingTeleport extends Item
 		// Determine if cross-dimension teleport is required and execute
 		if(unknownWorld)
 		{
-			serverPlayer.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_teleport.tip9", dim)), true);  //  wrong dim
+			serverPlayer.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_teleport.tip9")), true);  //  wrong dim
 		}
 		else if(serverWorld == destWorld) 
 		{
@@ -204,87 +206,7 @@ public class RingTeleport extends Item
 		}
 	}
 
-//    OLD CODE	-  SAVE FOR A LITTLE WHILE	
-//		BlockPos pos = getPosition(stack);
-//		String dim = getDimension(stack);
-//		RegistryKey<World> registryKey = world.getRegistryKey();
-//		
-//		ServerWorld serverWorld = ((ServerWorld)world).getServer().getWorld(registryKey);
-//		
-//		ServerWorld overWorld = ((ServerWorld)world).getServer().getWorld(World.OVERWORLD);
-//		ServerWorld netherWorld = ((ServerWorld)world).getServer().getWorld(World.NETHER);
-//		ServerWorld endWorld = ((ServerWorld)world).getServer().getWorld(World.END);
-//		ServerWorld miningWorld = ((ServerWorld)world).getServer().getWorld(Gobber2Dimension.GOBBER_WORLD_KEY);
-//		
-//		ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;
-//	
-//		// Need to refactor this at some point
-//		if (world instanceof ServerWorld)
-//		{			
-//			if((stack.getTag().getString("dim").contains("Overworld")))
-//			{
-//				if(!(serverWorld == overWorld))
-//				{					
-//					serverPlayer.teleport(overWorld, pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F, serverPlayer.yaw, serverPlayer.pitch);
-//					world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);	
-//				}
-//				else
-//				{
-//					serverPlayer.requestTeleport(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
-//					world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);	
-//				}
-//						
-//			}	
-//			else if((stack.getTag().getString("dim").contains("The Nether")))
-//			{
-//				if(!(serverWorld == netherWorld))
-//				{					
-//					serverPlayer.teleport(netherWorld, pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F, serverPlayer.yaw, serverPlayer.pitch);
-//					world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);	
-//				}
-//				else
-//				{
-//					serverPlayer.requestTeleport(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
-//					world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);	
-//				}
-//						
-//			}
-//			else if((stack.getTag().getString("dim").contains("The End")))
-//			{
-//				if(!(serverWorld == endWorld))
-//				{					
-//					serverPlayer.teleport(endWorld, pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F, serverPlayer.yaw, serverPlayer.pitch);
-//					world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);	
-//				}
-//				else
-//				{
-//					serverPlayer.requestTeleport(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
-//					world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);	
-//				}
-//						
-//			}
-//			else if((stack.getTag().getString("dim").contains("Mining World")))
-//			{
-//				if(!(serverWorld == miningWorld))
-//				{					
-//					serverPlayer.teleport(miningWorld, pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F, serverPlayer.yaw, serverPlayer.pitch);
-//					world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);	
-//				}
-//				else
-//				{
-//					serverPlayer.requestTeleport(pos.getX() + 0.5F, pos.getY(), pos.getZ() + 0.5F);
-//					world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_CHORUS_FRUIT_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);	
-//				}
-//						
-//			}
-//			else
-//			{
-//				serverPlayer.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_teleport.tip9", dim)), true);  //  wrong dim
-//			}
-//		}
-//	}
-
-	public String displaySetPosition(ItemStack stack)
+	public String getLocationString(ItemStack stack)
 	{
 		int storedX = stack.getOrCreateSubTag("pos").getInt("X");
 		int storedY = stack.getOrCreateSubTag("pos").getInt("Y");
@@ -305,7 +227,7 @@ public class RingTeleport extends Item
 		
 		if(getPosition(stack) != null)
 		{
-			tooltip.add(new TranslatableText("item.gobber2.gobber2_ring_teleport.tip5", displaySetPosition(stack)).formatted(Formatting.RED));		
+			tooltip.add(new TranslatableText("item.gobber2.gobber2_ring_teleport.tip5", getLocationString(stack)).formatted(Formatting.RED));		
 		}
 	}  
 }

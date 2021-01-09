@@ -241,7 +241,7 @@
 	"item.gobber2.gobber2_ring_teleport.tip6": "Location has been set to: %s",
 	"item.gobber2.gobber2_ring_teleport.tip7": "Location already set to: %s",
 	"item.gobber2.gobber2_ring_teleport.tip8": "Location cleared.",
-	"item.gobber2.gobber2_ring_teleport.tip9": "Wrong dimension, try using in: %s",
+	"item.gobber2.gobber2_ring_teleport.tip9": "Unsupported dimension",
 	
 	"item.gobber2.gobber2_ring_repair": "Ring of Repair",
 	"item.gobber2.gobber2_ring_repair.tip1": "Slowly repairs a single, damaged",
