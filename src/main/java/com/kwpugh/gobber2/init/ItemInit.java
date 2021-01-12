@@ -55,7 +55,6 @@ import com.kwpugh.gobber2.items.tools.basetools.ModPickaxe;
 import com.kwpugh.gobber2.items.tools.basetools.ModShovel;
 import com.kwpugh.gobber2.items.tools.basetools.ModSword;
 import com.kwpugh.gobber2.items.tools.endtools.BowEnd;
-import com.kwpugh.gobber2.items.tools.endtools.TreeAxeEnd;
 import com.kwpugh.gobber2.items.tools.endtools.ExcavatorEnd;
 import com.kwpugh.gobber2.items.tools.endtools.HammerEnd;
 import com.kwpugh.gobber2.items.tools.endtools.HoeEnd;
@@ -65,6 +64,7 @@ import com.kwpugh.gobber2.items.tools.endtools.PickaxeEnd;
 import com.kwpugh.gobber2.items.tools.endtools.ShovelEnd;
 import com.kwpugh.gobber2.items.tools.endtools.SwordEnd;
 import com.kwpugh.gobber2.items.tools.endtools.SwordEndSniper;
+import com.kwpugh.gobber2.items.tools.endtools.TreeAxeEnd;
 import com.kwpugh.gobber2.lists.ArmorMaterialList;
 import com.kwpugh.gobber2.lists.FoodList;
 import com.kwpugh.gobber2.lists.ToolMaterialList;
@@ -369,9 +369,9 @@ public class ItemInit
 		}
 	}
 	
-	//public static final Tag<Item> luckyloot = TagRegistry.item(new Identifier("c", "luckyloot"));
-	public static final Tag<Item> common_loot = TagRegistry.item(new Identifier("c", "common_loot"));
-	public static final Tag<Item> uncommon_loot = TagRegistry.item(new Identifier("c", "uncommon_loot"));
-	public static final Tag<Item> rare_loot = TagRegistry.item(new Identifier("c", "rare_loot"));
-	public static final Tag<Item> very_rare_loot = TagRegistry.item(new Identifier("c", "very_rare_loot"));
+	// Tag used by Lucky Block extra loot feature
+	public static final Tag<Item> COMMON_LOOT = TagRegistry.item(new Identifier("c", "common_loot"));
+	public static final Tag<Item> UNCOOMMON_LOOT = TagRegistry.item(new Identifier("c", "uncommon_loot"));
+	public static final Tag<Item> RARE_LOOT = TagRegistry.item(new Identifier("c", "rare_loot"));
+	public static final Tag<Item> VERY_RARE_LOOT = TagRegistry.item(new Identifier("c", "very_rare_loot"));	
 }

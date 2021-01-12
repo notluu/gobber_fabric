@@ -71,23 +71,23 @@ public class LuckyBlock  extends OreBlock
 				}
 				else if(r >= .10 && r < .20) // Common
 				{
-					ItemStack stack = ItemInit.common_loot.getRandom(random).getDefaultStack();
+					ItemStack stack = ItemInit.COMMON_LOOT.getRandom(random).getDefaultStack();
 					dropStack(world, pos, stack); 
 
 				}
 				else if(r >= .04 && r < .10)  //Uncommon
 				{
-					ItemStack stack = ItemInit.uncommon_loot.getRandom(random).getDefaultStack();
+					ItemStack stack = ItemInit.UNCOOMMON_LOOT.getRandom(random).getDefaultStack();
 					dropStack(world, pos, stack); 
 				}
 				else if(r >= .01 && r < .04)  //Rare
 				{
-					ItemStack stack = ItemInit.rare_loot.getRandom(random).getDefaultStack();
+					ItemStack stack = ItemInit.RARE_LOOT.getRandom(random).getDefaultStack();
 					dropStack(world, pos, stack); 
 				}
 				else if(r < .01)  //Very Rare
 				{
-					ItemStack stack = ItemInit.very_rare_loot.getRandom(random).getDefaultStack();
+					ItemStack stack = ItemInit.VERY_RARE_LOOT.getRandom(random).getDefaultStack();
 					dropStack(world, pos, stack); 
 				}	
 			}			

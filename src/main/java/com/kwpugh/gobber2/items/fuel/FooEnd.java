@@ -28,10 +28,10 @@ public class FooEnd extends Item
 		
 		if(!world.isClient && player.isSneaking())
 		{
-			String common = ItemInit.common_loot.values().toString();
-			String uncommon = ItemInit.uncommon_loot.values().toString();
-			String rare = ItemInit.rare_loot.values().toString();
-			String very_rare = ItemInit.very_rare_loot.values().toString();
+			String common = ItemInit.COMMON_LOOT.values().toString();
+			String uncommon = ItemInit.UNCOOMMON_LOOT.values().toString();
+			String rare = ItemInit.RARE_LOOT.values().toString();
+			String very_rare = ItemInit.VERY_RARE_LOOT.values().toString();
 	        
 			System.out.println("\nCommon Loot: " + common);
 			System.out.println("\nUncommon Loot: " + uncommon);
