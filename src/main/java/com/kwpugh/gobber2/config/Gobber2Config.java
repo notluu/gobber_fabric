@@ -90,6 +90,7 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
  		public int staffFarmerRange = 10;
  		public int staffFarmerInterval = 180;
  		public boolean staffFarmerReplant = true;
+ 		public boolean staffEnsnarementHotileMobs = false;
  		
  		@Comment("***********************"
 	    		+"\nDefender"
@@ -123,6 +124,7 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
 		public boolean enableEndHammer5x5 = true;
 		public boolean enableEndExcavator5x5 = true;
 		public boolean enableTreeAxe = true;
+		public int treeAxeDelayTick = 3;
 		public boolean enableHammers = true;
 		public boolean enableExcavators = true;
 		public boolean enablePaxels = true;

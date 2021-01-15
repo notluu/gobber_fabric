@@ -34,6 +34,8 @@ public class LuckyBlock  extends OreBlock
 	static boolean enableExtraLoot = Gobber2.CONFIG.GENERAL.enableExtraLoot;
 	static boolean enableFortune = Gobber2.CONFIG.GENERAL.enableFortune;
 	
+	Random random = new Random();
+	
 	@Override
 	public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player)
 	{

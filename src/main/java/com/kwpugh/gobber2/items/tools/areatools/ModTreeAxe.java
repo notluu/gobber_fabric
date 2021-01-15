@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
+import com.kwpugh.gobber2.Gobber2;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -60,6 +61,8 @@ public class ModTreeAxe extends AxeItem
 	{
 		super(material, attackDamage, attackSpeed, settings);
 	}
+	
+	static int delayTick = Gobber2.CONFIG.GENERAL.treeAxeDelayTick;
 
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
@@ -70,9 +73,9 @@ public class ModTreeAxe extends AxeItem
 			{				
 				if(!breakList.isEmpty())
 				{
-					if(((PlayerEntity) entity).age % 2 == 0)
+					if(((PlayerEntity) entity).age % delayTick == 0)
 					{
-						((PlayerEntity) entity).sendMessage((new TranslatableText("Chopping logs...")), true);  						
+						//((PlayerEntity) entity).sendMessage((new TranslatableText("Chopping logs...")), true);  						
 						breakPos = breakList.get(0);
 						world.breakBlock(breakPos, true);
 						breakList.remove(0);

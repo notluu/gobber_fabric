@@ -10,7 +10,13 @@ public class ToolTips
 	{
 	  	ItemTooltipCallback.EVENT.register((itemstack, context, lines) -> {
             if (itemstack.getItem() == Items.EXPERIENCE_BOTTLE) {
-                lines.add(new TranslatableText("Cool!"));
+                lines.add(new TranslatableText("Rythm is the Bomb!"));
+            }
+        });
+	  	
+	  	ItemTooltipCallback.EVENT.register((itemstack, context, lines) -> {
+            if (itemstack.getItem() == Items.BAKED_POTATO) {
+                lines.add(new TranslatableText("#BLAMECLEGG"));
             }
         });
 	}

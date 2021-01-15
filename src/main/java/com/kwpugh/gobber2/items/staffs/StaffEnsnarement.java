@@ -3,12 +3,16 @@ package com.kwpugh.gobber2.items.staffs;
 import java.util.List;
 import java.util.Optional;
 
+import com.kwpugh.gobber2.Gobber2;
+
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.boss.WitherEntity;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.DonkeyEntity;
 import net.minecraft.entity.passive.GolemEntity;
@@ -47,12 +51,25 @@ public class StaffEnsnarement extends Item
 		super(settings);
 	}
    
+	static boolean enableHostileUse = Gobber2.CONFIG.GENERAL.staffEnsnarementHotileMobs;
+	
 	// Right-click on entity, if right type, save entity info to tag and delete entity
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity player, LivingEntity entity, Hand hand) 
     {
     	if(!player.world.isClient)
-    	{     	
+    	{
+	       	 if((enableHostileUse) && (stack.getOrCreateTag().isEmpty()) &&
+	    			 (entity instanceof HostileEntity) && !(entity instanceof WitherEntity))
+	    	 {
+	       		 if(saveEntityToStack(entity, stack))
+	       		 {
+	       			 player.setStackInHand(hand, stack);
+	       		 }
+	  
+	 			return ActionResult.SUCCESS;        		 
+	    	 }
+       	 
         	 if((stack.getOrCreateTag().isEmpty()) &&
         			 (entity instanceof AnimalEntity ||	
         				entity instanceof HorseEntity ||

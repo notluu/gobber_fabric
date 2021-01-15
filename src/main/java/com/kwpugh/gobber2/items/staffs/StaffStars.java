@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.client.item.TooltipContext;
@@ -35,6 +36,8 @@ public class StaffStars extends Item
 		{			
 		  	BlockPos torchPos;
 	    	BlockPos pos = context.getBlockPos();
+	    	BlockState state = context.getWorld().getBlockState(pos);
+	    	
 			if(context.getWorld().getBlockState(pos).getBlock() == Blocks.TORCH
 					|| context.getWorld().getBlockState(pos).getBlock() == Blocks.WALL_TORCH)
 			{
@@ -42,6 +45,7 @@ public class StaffStars extends Item
 			}
 	    	
 	    	Boolean isWallTorch = false;
+	    		    	
 	    	switch(context.getSide())
 	    	{
 	    	case DOWN:
@@ -70,25 +74,30 @@ public class StaffStars extends Item
 	    	}
 	    	
 	    	if(context.getWorld().getBlockState(torchPos).isAir() || context.getWorld().getBlockState(torchPos).getFluidState().isStill())
-	    	{		
-	    		if(isWallTorch)
+	    	{		    		
+	    		if(state.isSolidBlock(world, pos))
 	    		{
-	    			context.getWorld().setBlockState(torchPos, Blocks.WALL_TORCH.getDefaultState().with(HorizontalFacingBlock.FACING, context.getSide()));
-	    			context.getWorld().playSound(null, context.getPlayer().getBlockPos(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
+	    			if(isWallTorch)
+		    		{
+	    				context.getWorld().setBlockState(torchPos, Blocks.WALL_TORCH.getDefaultState().with(HorizontalFacingBlock.FACING, context.getSide()));
+		    			context.getWorld().playSound(null, context.getPlayer().getBlockPos(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));	    			
+		    		}
+		    		else
+		    		{
+		    			context.getWorld().setBlockState(torchPos, Blocks.TORCH.getDefaultState());
+		    			context.getWorld().playSound(null, context.getPlayer().getBlockPos(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
+		    		}		
 	    		}
-	    		else
-	    		{
-	    			context.getWorld().setBlockState(torchPos, Blocks.TORCH.getDefaultState());
-	    			context.getWorld().playSound(null, context.getPlayer().getBlockPos(), SoundEvents.BLOCK_WOOD_PLACE, SoundCategory.NEUTRAL, 8.0F, (float) (0.7F + (Math.random()*0.3D)));
-	    		}
+	    		
 	    		return ActionResult.SUCCESS;
 	    	}
-	    	return ActionResult.FAIL;
+	    	
+	    	return ActionResult.PASS;
 		}
 		
         return ActionResult.SUCCESS;
 	}
-	
+	   
 	@Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext)
 	{

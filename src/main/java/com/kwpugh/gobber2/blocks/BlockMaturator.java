@@ -32,7 +32,7 @@ public class BlockMaturator extends Block implements BlockEntityProvider
 	@Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack stack, BlockView world, List<Text> tooltip, TooltipContext options)
 	{
-		tooltip.add(new TranslatableText("item.gobber2.block_healer.tip1").formatted(Formatting.GREEN));
+		tooltip.add(new TranslatableText("item.gobber2.block_maturator.tip1").formatted(Formatting.GREEN));
 		tooltip.add(new TranslatableText("item.gobber2.requires_redstone").formatted(Formatting.YELLOW));
 	}
 }
