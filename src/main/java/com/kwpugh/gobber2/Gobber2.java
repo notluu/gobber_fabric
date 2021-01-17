@@ -8,6 +8,7 @@ import com.kwpugh.gobber2.init.FuelInit;
 import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.init.LootTableInit;
 import com.kwpugh.gobber2.init.PortalInit;
+import com.kwpugh.gobber2.init.TagInit;
 import com.kwpugh.gobber2.world.Gobber2Dimension;
 import com.kwpugh.gobber2.world.ModConfiguredFeatures;
 
@@ -28,13 +29,15 @@ public class Gobber2 implements ModInitializer
 {
 	public static final String MOD_ID = "gobber2";
 	public static final Identifier MOD_DIMENSION_ID = new Identifier(Gobber2.MOD_ID, "mining");	
+	public static final Identifier MOD_DIMENSION2_ID = new Identifier(Gobber2.MOD_ID, "hunting");	
 	public static final Gobber2 INSTANCE = new Gobber2();
 	public static final ItemGroup GOBBER2_GROUP = FabricItemGroupBuilder.build(new Identifier(MOD_ID, "gobber2_group"), () -> new ItemStack(ItemInit.GOBBER2_SWORD_NETHER));
 	public static final Gobber2Config CONFIG = AutoConfig.register(Gobber2Config.class, PartitioningSerializer.wrap(JanksonConfigSerializer::new)).getConfig();
 	
     @Override
     public void onInitialize()
-    {    	
+    { 
+    	TagInit.registerTags();
     	BlockInit.registerBlocks();
     	BlockInit.registerBlockItems();
     	BlockInit.registerBlockEntities();

@@ -1,7 +1,7 @@
 package com.kwpugh.gobber2.init;
 
 import com.kwpugh.gobber2.Gobber2;
-import com.kwpugh.gobber2.items.Foo;
+import com.kwpugh.gobber2.items.SpecialItem;
 import com.kwpugh.gobber2.items.armor.EndArmor;
 import com.kwpugh.gobber2.items.armor.GobberArmor;
 import com.kwpugh.gobber2.items.armor.NetherArmor;
@@ -10,43 +10,61 @@ import com.kwpugh.gobber2.items.food.GooeyApple;
 import com.kwpugh.gobber2.items.food.GooeyBeef;
 import com.kwpugh.gobber2.items.food.GooeyBeefstew;
 import com.kwpugh.gobber2.items.food.GooeyBread;
+import com.kwpugh.gobber2.items.fuel.Foo;
+import com.kwpugh.gobber2.items.fuel.FooEnd;
 import com.kwpugh.gobber2.items.medallions.MedallionBreathing;
+import com.kwpugh.gobber2.items.medallions.MedallionExp;
+import com.kwpugh.gobber2.items.medallions.MedallionHero;
 import com.kwpugh.gobber2.items.medallions.MedallionSea;
+import com.kwpugh.gobber2.items.rings.RingAbove;
+import com.kwpugh.gobber2.items.rings.RingAirWalking;
 import com.kwpugh.gobber2.items.rings.RingAscent;
 import com.kwpugh.gobber2.items.rings.RingAttraction;
 import com.kwpugh.gobber2.items.rings.RingBlink;
 import com.kwpugh.gobber2.items.rings.RingCuring;
+import com.kwpugh.gobber2.items.rings.RingDismissal;
 import com.kwpugh.gobber2.items.rings.RingEnderchest;
+import com.kwpugh.gobber2.items.rings.RingExplorer;
 import com.kwpugh.gobber2.items.rings.RingFarmer;
 import com.kwpugh.gobber2.items.rings.RingHaste;
 import com.kwpugh.gobber2.items.rings.RingMiner;
 import com.kwpugh.gobber2.items.rings.RingPhoenix;
+import com.kwpugh.gobber2.items.rings.RingRepair;
+import com.kwpugh.gobber2.items.rings.RingReturn;
+import com.kwpugh.gobber2.items.rings.RingStealth;
 import com.kwpugh.gobber2.items.rings.RingSunshine;
 import com.kwpugh.gobber2.items.rings.RingSwiftness;
+import com.kwpugh.gobber2.items.rings.RingTeleport;
+import com.kwpugh.gobber2.items.rings.RingTraveler;
 import com.kwpugh.gobber2.items.rings.RingVision;
+import com.kwpugh.gobber2.items.rings.RingVoid;
 import com.kwpugh.gobber2.items.staffs.StaffClearing;
+import com.kwpugh.gobber2.items.staffs.StaffEnsnarement;
+import com.kwpugh.gobber2.items.staffs.StaffFarmer;
+import com.kwpugh.gobber2.items.staffs.StaffNature;
 import com.kwpugh.gobber2.items.staffs.StaffSniper;
 import com.kwpugh.gobber2.items.staffs.StaffStars;
-import com.kwpugh.gobber2.items.tools.AxeEnd;
-import com.kwpugh.gobber2.items.tools.BowEnd;
-import com.kwpugh.gobber2.items.tools.ExcavatorEnd;
-import com.kwpugh.gobber2.items.tools.HammerEnd;
-import com.kwpugh.gobber2.items.tools.HoeEnd;
-import com.kwpugh.gobber2.items.tools.PaxelEnd;
-import com.kwpugh.gobber2.items.tools.PaxelEndStars;
-import com.kwpugh.gobber2.items.tools.PickaxeEnd;
-import com.kwpugh.gobber2.items.tools.ShovelEnd;
-import com.kwpugh.gobber2.items.tools.SwordEnd;
-import com.kwpugh.gobber2.items.tools.SwordEndSniper;
 import com.kwpugh.gobber2.items.tools.areatools.ModExcavator;
 import com.kwpugh.gobber2.items.tools.areatools.ModHammer;
-import com.kwpugh.gobber2.items.tools.base.ModAxe;
-import com.kwpugh.gobber2.items.tools.base.ModBow;
-import com.kwpugh.gobber2.items.tools.base.ModHoe;
-import com.kwpugh.gobber2.items.tools.base.ModPaxel;
-import com.kwpugh.gobber2.items.tools.base.ModPickaxe;
-import com.kwpugh.gobber2.items.tools.base.ModShovel;
-import com.kwpugh.gobber2.items.tools.base.ModSword;
+import com.kwpugh.gobber2.items.tools.areatools.ModTreeAxe;
+import com.kwpugh.gobber2.items.tools.basetools.ModAxe;
+import com.kwpugh.gobber2.items.tools.basetools.ModBow;
+import com.kwpugh.gobber2.items.tools.basetools.ModHoe;
+import com.kwpugh.gobber2.items.tools.basetools.ModPaxel;
+import com.kwpugh.gobber2.items.tools.basetools.ModPickaxe;
+import com.kwpugh.gobber2.items.tools.basetools.ModShovel;
+import com.kwpugh.gobber2.items.tools.basetools.ModSword;
+import com.kwpugh.gobber2.items.tools.endtools.BowEnd;
+import com.kwpugh.gobber2.items.tools.endtools.ExcavatorEnd;
+import com.kwpugh.gobber2.items.tools.endtools.HammerEnd;
+import com.kwpugh.gobber2.items.tools.endtools.HoeEnd;
+import com.kwpugh.gobber2.items.tools.endtools.PaxelEnd;
+import com.kwpugh.gobber2.items.tools.endtools.PaxelEndStars;
+import com.kwpugh.gobber2.items.tools.endtools.PickaxeEnd;
+import com.kwpugh.gobber2.items.tools.endtools.ShovelEnd;
+import com.kwpugh.gobber2.items.tools.endtools.SwordEnd;
+import com.kwpugh.gobber2.items.tools.endtools.SwordEndSniper;
+import com.kwpugh.gobber2.items.tools.endtools.TreeAxeEnd;
 import com.kwpugh.gobber2.lists.ArmorMaterialList;
 import com.kwpugh.gobber2.lists.FoodList;
 import com.kwpugh.gobber2.lists.ToolMaterialList;
@@ -59,13 +77,19 @@ import net.minecraft.util.registry.Registry;
 
 public class ItemInit
 {
+	static boolean enableSpecial = Gobber2.CONFIG.GENERAL.enableSpecialItem;
+	static boolean enableTreeAxe = Gobber2.CONFIG.GENERAL.enableTreeAxe;
+	static boolean enableHammers = Gobber2.CONFIG.GENERAL.enableHammers;
+	static boolean enableExcavators = Gobber2.CONFIG.GENERAL.enableExcavators;
+	static boolean enablePaxels = Gobber2.CONFIG.GENERAL.enablePaxels;
+	
 	public static final Item GOBBER2_GLOB = new Item((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_GLOB_NETHER = new Item((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_GLOB_END = new Item((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_GLOB_END = new Item((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));	
 
 	public static final Item GOBBER2_FOO = new Foo((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_FOO_NETHER = new Foo((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_FOO_END = new Foo((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_FOO_END = new FooEnd((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
 
 	public static final Item GOBBER2_GOO = new Goo((new Item.Settings()).food(FoodList.goo).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_GOOEY_APPLE = new GooeyApple((new Item.Settings()).food(FoodList.gooey_apple).group(Gobber2.GOBBER2_GROUP));
@@ -110,8 +134,8 @@ public class ItemInit
 	
 	public static final Item GOBBER2_AXE = new ModAxe(ToolMaterialList.GOBBER, 8.0F, -2.9F, (new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_AXE_NETHER = new ModAxe(ToolMaterialList.GOBBER_NETHER, 10.0F, -2.8F, (new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_AXE_END = new AxeEnd(ToolMaterialList.GOBBER_END, 13.0F, -2.7F, (new Item.Settings()).fireproof().group(Gobber2.GOBBER2_GROUP));
-	
+	public static final Item GOBBER2_AXE_END = new ModAxe(ToolMaterialList.GOBBER_END, 13.0F, -2.7F, (new Item.Settings()).fireproof().group(Gobber2.GOBBER2_GROUP));
+		
 	public static final Item GOBBER2_SHOVEL = new ModShovel(ToolMaterialList.GOBBER, 5.0F, -3.0F, (new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_SHOVEL_NETHER = new ModShovel(ToolMaterialList.GOBBER_NETHER, 6.0F, -2.8F, (new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_SHOVEL_END = new ShovelEnd(ToolMaterialList.GOBBER_END, 8.0F, -2.6F, (new Item.Settings()).fireproof().group(Gobber2.GOBBER2_GROUP));
@@ -133,6 +157,10 @@ public class ItemInit
 	public static final Item GOBBER2_EXCAVATOR_NETHER = new ModExcavator(ToolMaterialList.GOBBER_NETHER, 6.0F, -2.8F, (new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_EXCAVATOR_END = new ExcavatorEnd(ToolMaterialList.GOBBER_END, 8.0F, -2.6F, (new Item.Settings()).fireproof().group(Gobber2.GOBBER2_GROUP));
 	
+	public static final Item GOBBER2_TREE_AXE = new ModTreeAxe(ToolMaterialList.GOBBER, 8.0F, -2.9F, (new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_TREE_AXE_NETHER = new ModTreeAxe(ToolMaterialList.GOBBER_NETHER, 10.0F, -2.8F, (new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_TREE_AXE_END = new TreeAxeEnd(ToolMaterialList.GOBBER_END, 13.0F, -2.7F, (new Item.Settings()).fireproof().group(Gobber2.GOBBER2_GROUP));
+
 	public static final Item GOBBER2_HELMET = new GobberArmor(ArmorMaterialList.GOBBER, EquipmentSlot.HEAD, (new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_CHESTPLATE = new GobberArmor(ArmorMaterialList.GOBBER, EquipmentSlot.CHEST, (new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_LEGGINGS = new GobberArmor(ArmorMaterialList.GOBBER, EquipmentSlot.LEGS, (new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
@@ -149,27 +177,44 @@ public class ItemInit
 	public static final Item GOBBER2_LEGGINGS_END = new EndArmor(ArmorMaterialList.GOBBER_END, EquipmentSlot.LEGS, (new Item.Settings()).fireproof().group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_BOOTS_END = new EndArmor(ArmorMaterialList.GOBBER_END, EquipmentSlot.FEET, (new Item.Settings()).fireproof().group(Gobber2.GOBBER2_GROUP));
 	
-	public static final Item GOBBER2_RING_ATTRACTION = new RingAttraction((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_RING_SWIFTNESS = new RingSwiftness((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_RING_FARMER = new RingFarmer((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_RING_MINER = new RingMiner((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_RING_ASCENT = new RingAscent((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_RING_SUNSHINE = new RingSunshine((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_ATTRACTION = new RingAttraction((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_RETURN = new RingReturn((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_SWIFTNESS = new RingSwiftness((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_FARMER = new RingFarmer((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_MINER = new RingMiner((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_ASCENT = new RingAscent((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_SUNSHINE = new RingSunshine((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_ABOVE = new RingAbove((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
 	
-	public static final Item GOBBER2_RING_CURING = new RingCuring((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_RING_VISION = new RingVision((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_RING_HASTE = new RingHaste((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_RING_PHOENIX = new RingPhoenix((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_CURING = new RingCuring((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_VISION = new RingVision((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_HASTE = new RingHaste((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_PHOENIX = new RingPhoenix((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));	
+	public static final Item GOBBER2_RING_REPAIR = new RingRepair((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
 	
-	public static final Item GOBBER2_RING_ENDERCHEST = new RingEnderchest((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_RING_BLINK = new RingBlink((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_ENDERCHEST = new RingEnderchest((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_EXPLORER = new RingExplorer((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_BLINK = new RingBlink((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_VOID = new RingVoid((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_AIRWALKING = new RingAirWalking((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_TELEPORT = new RingTeleport((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_DISMISSAL = new RingDismissal((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_STEALTH = new RingStealth((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_RING_TRAVELER = new RingTraveler((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
 	
-	public static final Item GOBBER2_MEDALLION_BREATHING = new MedallionBreathing((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_MEDALLION_SEA = new MedallionSea((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_MEDALLION_BREATHING = new MedallionBreathing((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_MEDALLION_HERO = new MedallionHero((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_MEDALLION_EXP = new MedallionExp((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_MEDALLION_SEA = new MedallionSea((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
 	
-	public static final Item GOBBER2_STAFF_CLEARING = new StaffClearing((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_STAFF_STARS = new StaffStars((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_STAFF_SNIPER = new StaffSniper((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_STAFF_CLEARING = new StaffClearing((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_STAFF_ENSNAREMENT = new StaffEnsnarement((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_STAFF_FARMER = new StaffFarmer((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_STAFF_STARS = new StaffStars((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_STAFF_NATURE = new StaffNature((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_STAFF_SNIPER = new StaffSniper((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
+	
+	public static final Item GOBBER2_SPECIAL_ITEM = new SpecialItem((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
 	
 	public static void registerItems()
 	{
@@ -234,18 +279,34 @@ public class ItemInit
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_hoe_nether"), GOBBER2_HOE_NETHER);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_hoe_end"), GOBBER2_HOE_END);	
 		
-		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_paxel"), GOBBER2_PAXEL);
-		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_paxel_nether"), GOBBER2_PAXEL_NETHER);
-		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_paxel_end"), GOBBER2_PAXEL_END);
-		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_paxel_stars"), GOBBER2_PAXEL_STARS);
-		
-		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_hammer"), GOBBER2_HAMMER);
-		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_hammer_nether"), GOBBER2_HAMMER_NETHER);
-		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_hammer_end"), GOBBER2_HAMMER_END);
-		
-		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_excavator"), GOBBER2_EXCAVATOR);
-		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_excavator_nether"), GOBBER2_EXCAVATOR_NETHER);
-		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_excavator_end"), GOBBER2_EXCAVATOR_END);
+		if(enablePaxels)
+		{
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_paxel"), GOBBER2_PAXEL);
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_paxel_nether"), GOBBER2_PAXEL_NETHER);
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_paxel_end"), GOBBER2_PAXEL_END);
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_paxel_stars"), GOBBER2_PAXEL_STARS);		
+		}
+	
+		if(enableHammers)
+		{
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_hammer"), GOBBER2_HAMMER);
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_hammer_nether"), GOBBER2_HAMMER_NETHER);
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_hammer_end"), GOBBER2_HAMMER_END);			
+		}
+
+		if(enableExcavators)
+		{
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_excavator"), GOBBER2_EXCAVATOR);
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_excavator_nether"), GOBBER2_EXCAVATOR_NETHER);
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_excavator_end"), GOBBER2_EXCAVATOR_END);			
+		}
+
+		if(enableTreeAxe)
+		{
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_tree_axe"), GOBBER2_TREE_AXE);
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_tree_axe_nether"), GOBBER2_TREE_AXE_NETHER);
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_tree_axe_end"), GOBBER2_TREE_AXE_END);	
+		}
 		
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_helmet"), GOBBER2_HELMET);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_chestplate"), GOBBER2_CHESTPLATE);
@@ -264,25 +325,45 @@ public class ItemInit
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_boots_end"), GOBBER2_BOOTS_END);
 		
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_attraction"), GOBBER2_RING_ATTRACTION);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_return"), GOBBER2_RING_RETURN);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_swiftness"), GOBBER2_RING_SWIFTNESS);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_farmer"), GOBBER2_RING_FARMER);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_miner"), GOBBER2_RING_MINER);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_ascent"), GOBBER2_RING_ASCENT);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_sunshine"), GOBBER2_RING_SUNSHINE);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_above"), GOBBER2_RING_ABOVE);
 		
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_curing"), GOBBER2_RING_CURING);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_vision"), GOBBER2_RING_VISION);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_haste"), GOBBER2_RING_HASTE);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_phoenix"), GOBBER2_RING_PHOENIX);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_repair"), GOBBER2_RING_REPAIR);
 		
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_enderchest"), GOBBER2_RING_ENDERCHEST);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_explorer"), GOBBER2_RING_EXPLORER);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_blink"), GOBBER2_RING_BLINK);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_void"), GOBBER2_RING_VOID);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_airwalking"), GOBBER2_RING_AIRWALKING);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_teleport"), GOBBER2_RING_TELEPORT);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_dismissal"), GOBBER2_RING_DISMISSAL);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_stealth"), GOBBER2_RING_STEALTH);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_ring_traveler"), GOBBER2_RING_TRAVELER);
 		
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_medallion_breathing"), GOBBER2_MEDALLION_BREATHING);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_medallion_hero"), GOBBER2_MEDALLION_HERO);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_medallion_exp"), GOBBER2_MEDALLION_EXP);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_medallion_sea"), GOBBER2_MEDALLION_SEA);
 		
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_staff_clearing"), GOBBER2_STAFF_CLEARING);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_staff_ensnarement"), GOBBER2_STAFF_ENSNAREMENT);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_staff_farmer"), GOBBER2_STAFF_FARMER);
+		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_staff_nature"), GOBBER2_STAFF_NATURE);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_staff_stars"), GOBBER2_STAFF_STARS);
 		Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_staff_sniper"), GOBBER2_STAFF_SNIPER);
+		
+		if(enableSpecial)
+		{
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_special_item"), GOBBER2_SPECIAL_ITEM);
+		}
 	}
 }

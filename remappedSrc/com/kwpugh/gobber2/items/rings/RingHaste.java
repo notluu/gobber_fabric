@@ -29,14 +29,16 @@ public class RingHaste extends Item
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
 	{
+		LivingEntity player = (LivingEntity) entity;
+		
 		if(EnableUtil.isEnabled(stack))
 		{
 			StatusEffectInstance effect = new StatusEffectInstance(StatusEffects.HASTE, 8, 2, false, false);
-			LivingEntity player = (LivingEntity) entity;
+						
 			{
 				player.addStatusEffect(effect);
-			}
-		}	
+			}					
+		}
 	}
 	
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand)
@@ -50,7 +52,7 @@ public class RingHaste extends Item
 		}
 
 		return TypedActionResult.success(itemStack);
-	}
+	}	
 	
 	@Override
 	public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext)

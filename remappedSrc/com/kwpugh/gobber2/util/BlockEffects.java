@@ -22,7 +22,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.BlazeEntity;
@@ -53,7 +52,7 @@ public class BlockEffects
 		// Scan for hostile mobs
 		Box mobBox = (new Box(pos)).expand(radius, 10.0D, radius);
 		List<Entity> list2 = world.getNonSpectatingEntities(Entity.class, mobBox);
-		Iterator iterator2 = list2.iterator();
+		Iterator<Entity> iterator2 = list2.iterator();
 		
 		Entity targetEntity;
 		
@@ -128,7 +127,7 @@ public class BlockEffects
 		// Scan for hostile mobs
 		Box mobBox = (new Box(pos)).expand(radius, 10.0D, radius);
 		List<Entity> list2 = world.getNonSpectatingEntities(Entity.class, mobBox);
-		Iterator iterator2 = list2.iterator();
+		Iterator<Entity> iterator2 = list2.iterator();
 		
 		Entity targetEntity;
 		
@@ -145,28 +144,24 @@ public class BlockEffects
 		}
 	}
 	
-	// Cause mobs to target themselves, disable AI on creepers and skeleton 
+	// Kills hostile mobs that come within range (set in config)
 	public static void attackMobs(World world, BlockPos pos, int radius, float damageAmount)
 	{
 		// Scan for hostile mobs
 		Box mobBox = (new Box(pos)).expand(radius, 10.0D, radius);
 		List<Entity> list2 = world.getNonSpectatingEntities(Entity.class, mobBox);
-		Iterator iterator2 = list2.iterator();
+		Iterator<Entity> iterator2 = list2.iterator();
 		
 		Entity targetEntity;
 		
-		// Cycle through and effect entities
+		// Cycle through and kill entities
 		while(iterator2.hasNext())
 		{
 			targetEntity = (Entity)iterator2.next();
 			if(targetEntity instanceof HostileEntity)
-			{				
-				targetEntity.damage(DamageSource.GENERIC, damageAmount);
-				((HostileEntity) targetEntity).setTarget((LivingEntity) targetEntity);
-				if(targetEntity instanceof CreeperEntity || targetEntity instanceof SkeletonEntity)
-				{
-					((HostileEntity) targetEntity).setAiDisabled(true);
-				}
+			{
+				targetEntity.remove();
+				((HostileEntity) targetEntity).playSpawnEffects();
 			}
 		}
 	}
@@ -177,7 +172,7 @@ public class BlockEffects
 		// Scan for players in range
 		Box playerBox = (new Box(pos)).expand(radius, 8.0D, radius);
 		List<ServerPlayerEntity> list = world.getNonSpectatingEntities(ServerPlayerEntity.class, playerBox);
-		Iterator iterator1 = list.iterator();
+		Iterator<ServerPlayerEntity> iterator1 = list.iterator();
 		
 		ServerPlayerEntity targetPlayer;
 
@@ -198,8 +193,6 @@ public class BlockEffects
 	//  Accelerates growth in area of effect
 	public static void growCrops(World world, BlockPos pos, int baseTickDelay, int radius)
 	{
-		ServerWorld serverWorld = (ServerWorld) world;
-	
 		BlockPos growthBlock = pos;
 	
 		for (BlockPos target : BlockPos.iterateOutwards(growthBlock, radius, 5, radius))
@@ -255,7 +248,7 @@ public class BlockEffects
 		// Scan for players in range
 		Box playerBox = (new Box(pos)).expand(radius, 4, radius);
 		List<ServerPlayerEntity> list = world.getNonSpectatingEntities(ServerPlayerEntity.class, playerBox);
-		Iterator iterator1 = list.iterator();
+		Iterator<ServerPlayerEntity> iterator1 = list.iterator();
 		
 		ServerPlayerEntity targetPlayer;
 		

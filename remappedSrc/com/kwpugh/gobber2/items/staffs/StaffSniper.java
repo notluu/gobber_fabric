@@ -4,9 +4,12 @@ import java.util.List;
 
 import com.kwpugh.gobber2.Gobber2;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity.PickupPermission;
 import net.minecraft.item.ArrowItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,14 +28,19 @@ public class StaffSniper extends Item
 		super(settings);
 	}
 	
-	static int cooldown = Gobber2.getConfig().STAFFS.staffSniperCooldown;
+	static int cooldown = Gobber2.CONFIG.GENERAL.staffSniperCooldown;
 	
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand)
 	{
 		ItemStack stack = player.getStackInHand(hand);
-
-		player.getItemCooldownManager().set(this, cooldown);
+		ItemStack stack2 = player.getMainHandStack();
+		boolean hasQuickUse = stack2.getEnchantments().toString().contains("quickuse");
+					
+		if(!hasQuickUse)
+		{
+			player.getItemCooldownManager().set(this, cooldown);
+		}
 		
         if (!world.isClient)
         {			
@@ -42,13 +50,13 @@ public class StaffSniper extends Item
             persistentProjectileEntity.setProperties(player, player.pitch, player.yaw, 0.0F, arrowVelocity, 0.0F);
             persistentProjectileEntity.setDamage(1);
             world.spawnEntity(persistentProjectileEntity);
-            persistentProjectileEntity.pickupType = persistentProjectileEntity.pickupType.DISALLOWED;
+            persistentProjectileEntity.pickupType = PickupPermission.DISALLOWED;
         }
 		
 		return TypedActionResult.success(stack);
 	}
 	
-	@Override
+	@Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) 
 	{
 	    tooltip.add(new TranslatableText("item.gobber2.gobber2_staff_sniper.tip1").formatted(Formatting.GREEN));

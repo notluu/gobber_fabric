@@ -34,7 +34,7 @@ public class RingPhoenix extends Item
 	@Override
 	public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext)
 	{
-		tooltip.add(new TranslatableText("item.gobber2.gobber2_ring_phoenix").formatted(Formatting.GREEN));
+		tooltip.add(new TranslatableText("item.gobber2.gobber2_ring_phoenix.tip1").formatted(Formatting.GREEN));
 		tooltip.add(new TranslatableText("item.gobber2.while_in_inventory").formatted(Formatting.YELLOW));
 	} 
 }

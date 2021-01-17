@@ -2,6 +2,7 @@ package com.kwpugh.gobber2.items.armor;
 
 import java.util.List;
 
+import com.kwpugh.gobber2.Gobber2;
 import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 
@@ -23,11 +24,13 @@ public class NetherArmor extends ArmorItem
 	{
 		super(material, slot, settings);
 	}
+	
+	static boolean enablePerks = Gobber2.CONFIG.GENERAL.enableNetherPerks;
 
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
 	{				
-		if(!world.isClient && entity instanceof PlayerEntity) 
+		if(!world.isClient && entity instanceof PlayerEntity && enablePerks) 
 		{
 			PlayerEntity player = (PlayerEntity) entity;
 			
@@ -43,7 +46,7 @@ public class NetherArmor extends ArmorItem
 	      	{
 	    		if(player.age % 180 == 0)
 				{
-					PlayerSpecialAbilities.giveSlowAbsorption(world, player, stack);
+					PlayerSpecialAbilities.giveLesserAbsorption(world, player, stack);
 					PlayerSpecialAbilities.giveSaturationEffect(world, player, stack);
 					PlayerSpecialAbilities.giveHealing(world, player, stack, 2);
 				}	
@@ -57,5 +60,7 @@ public class NetherArmor extends ArmorItem
 	public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext)
 	{
 		tooltip.add(new TranslatableText("item.gobber2.gobber2_armor_nether.tip1").formatted(Formatting.GREEN));
+		tooltip.add(new TranslatableText("item.gobber2.gobber2_armor_nether.tip2").formatted(Formatting.GREEN));
+		tooltip.add(new TranslatableText("item.gobber2.gobber2_armor_nether.tip3").formatted(Formatting.GREEN));
 	}
 }

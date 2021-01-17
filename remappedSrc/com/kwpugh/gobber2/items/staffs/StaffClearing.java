@@ -30,7 +30,7 @@ public class StaffClearing extends Item
 		super(settings);
 	}
 
-	static int clearingRange = Gobber2.getConfig().STAFFS.staffClearingRange;
+	static int clearingRange = Gobber2.CONFIG.GENERAL.staffClearingRange;
 	
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand)
 	{

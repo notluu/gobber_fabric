@@ -11,7 +11,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -30,8 +29,8 @@ public class RingBlink extends Item
 		super(settings);
 	}
 	
-	static int blinkDistance = Gobber2.getConfig().RINGS.ringBlinkDistance;
-	static int blinkCooldown = Gobber2.getConfig().RINGS.ringBlinkCooldown;
+	static int blinkDistance = Gobber2.CONFIG.GENERAL.ringBlinkDistance;
+	static int blinkCooldown = Gobber2.CONFIG.GENERAL.ringBlinkCooldown;
 	
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
@@ -45,34 +44,30 @@ public class RingBlink extends Item
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand)
 	{
 		ItemStack stack = player.getStackInHand(hand);
-		
-		player.getItemCooldownManager().set(this, blinkCooldown);
-		
-		if (!world.isClient)
+		ItemStack stack2 = player.getMainHandStack();	
+		boolean hasQuickUse = stack2.getEnchantments().toString().contains("quickuse");
+					
+		if(!hasQuickUse)
 		{
-			BlockHitResult pos = HitResultUtil.getNearestPositionWithAir(world, player, blinkDistance);
-
-			if(pos != null && (pos.getType() == HitResult.Type.BLOCK || player.pitch >= -5))
-            {
-            	int side = pos.getType().ordinal();
-                
-            	System.out.println("side: " + side);
-            	
-            	if(side != -1)
-                {
-                    double x = pos.getSide().getOffsetX()-(side == 4 ? 0.5 : 0)+(side == 5 ? 0.5 : 0);
-                    double y = pos.getSide().getOffsetY()-(side == 0 ? 2.0 : 0)+(side == 1 ? 0.5 : 0);
-                    double z = pos.getSide().getOffsetZ()-(side == 2 ? 0.5 : 0)+(side == 3 ? 0.5 : 0);
-	                            
-	           		player.stopRiding();
-	           		((ServerPlayerEntity)player).requestTeleport(pos.getPos().x, pos.getPos().y, pos.getPos().z);
-	           		player.fallDistance = 0.0F;
-                    world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
-                }
-            }		 	        
+			player.getItemCooldownManager().set(this, blinkCooldown);
 		}
+		
+		BlockHitResult pos = HitResultUtil.getNearestPositionWithAir(world, player, blinkDistance);
 
-		return TypedActionResult.success(stack);
+		if(pos != null && (pos.getType() == HitResult.Type.BLOCK || player.pitch >= -5))
+        {
+        	int side = pos.getType().ordinal();
+
+        	if(side != -1)
+            {                 
+                player.stopRiding();
+           		player.requestTeleport(pos.getPos().x, pos.getPos().y, pos.getPos().z);
+           		player.fallDistance = 0.0F;
+                world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);	
+            }			
+        }
+		
+		return TypedActionResult.success(stack, world.isClient);
 	}
 
 	@Override

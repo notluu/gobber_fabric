@@ -43,7 +43,7 @@ public class RingVision extends Item
 	{
 		ItemStack itemStack = user.getStackInHand(hand);
 
-		if (!world.isClient && user.isSneaking())
+		if (!world.isClient)
 		{
 			EnableUtil.changeEnabled(user, hand);
 			user.sendMessage((new TranslatableText("Status changed")), true);
@@ -56,6 +56,6 @@ public class RingVision extends Item
 	public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext)
 	{
 		tooltip.add(new TranslatableText("item.gobber2.gobber2_ring_vision.tip1").formatted(Formatting.GREEN));
-		tooltip.add(new TranslatableText("item.gobber2.sneak_right_click").formatted(Formatting.YELLOW));
+		tooltip.add(new TranslatableText("item.gobber2.right_click").formatted(Formatting.YELLOW));
 	}
 }

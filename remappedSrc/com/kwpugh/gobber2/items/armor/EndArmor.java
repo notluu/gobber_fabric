@@ -2,6 +2,7 @@ package com.kwpugh.gobber2.items.armor;
 
 import java.util.List;
 
+import com.kwpugh.gobber2.Gobber2;
 import com.kwpugh.gobber2.init.ItemInit;
 import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 
@@ -11,6 +12,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -24,15 +26,15 @@ public class EndArmor extends ArmorItem
 		super(material, slot, settings);
 	}
 	
+	static boolean enablePerks = Gobber2.CONFIG.GENERAL.enableEndPerks;
+	
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
 	{
-		if(!world.isClient && entity instanceof PlayerEntity) 
+		if(!world.isClient && entity instanceof PlayerEntity && enablePerks) 
 		{
 			PlayerEntity player = (PlayerEntity) entity;
 	
-			player.fallDistance = 0.0F;
-			
 	    	ItemStack head = player.getEquippedStack(EquipmentSlot.HEAD);
 			ItemStack chest = player.getEquippedStack(EquipmentSlot.CHEST);
 			ItemStack legs = player.getEquippedStack(EquipmentSlot.LEGS);
@@ -45,13 +47,15 @@ public class EndArmor extends ArmorItem
 	      	{
 	    		if(player.age % 180 == 0)
 				{
-					PlayerSpecialAbilities.giveFastAbsorption(world, player, stack);
+					PlayerSpecialAbilities.giveGreaterAbsorption(world, player, stack);
 					PlayerSpecialAbilities.giveSaturationEffect(world, player, stack);
 					PlayerSpecialAbilities.giveHealing(world, player, stack, 4);
 				}
 	    		
 	    		PlayerSpecialAbilities.giveWaterBreathing(world, player);
 	    		PlayerSpecialAbilities.givePhoenixEffect(world, player);
+	    		
+	    		player.fallDistance = 0.0F;
 	      	}
 		}
 	}
@@ -60,11 +64,20 @@ public class EndArmor extends ArmorItem
 	public void onCraft(ItemStack stack, World world, PlayerEntity player) 
 	{
 		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		
+		Item item = stack.getItem();
+				
+		if(item == ItemInit.GOBBER2_BOOTS_END)
+		{
+			
+		}
 	}
 	
 	@Override
 	public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext)
 	{
 		tooltip.add(new TranslatableText("item.gobber2.gobber2_armor_end.tip1").formatted(Formatting.GREEN));
+		tooltip.add(new TranslatableText("item.gobber2.gobber2_armor_end.tip2").formatted(Formatting.GREEN));
+		tooltip.add(new TranslatableText("item.gobber2.gobber2_armor_end.tip3").formatted(Formatting.GREEN));
 	}	
 }

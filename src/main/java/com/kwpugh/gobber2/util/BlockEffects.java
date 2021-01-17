@@ -22,7 +22,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.ExperienceOrbEntity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.BlazeEntity;
@@ -145,7 +144,7 @@ public class BlockEffects
 		}
 	}
 	
-	// Cause mobs to target themselves, disable AI on creepers and skeleton 
+	// Kills hostile mobs that come within range (set in config)
 	public static void attackMobs(World world, BlockPos pos, int radius, float damageAmount)
 	{
 		// Scan for hostile mobs
@@ -155,18 +154,14 @@ public class BlockEffects
 		
 		Entity targetEntity;
 		
-		// Cycle through and effect entities
+		// Cycle through and kill entities
 		while(iterator2.hasNext())
 		{
 			targetEntity = (Entity)iterator2.next();
 			if(targetEntity instanceof HostileEntity)
-			{				
-				targetEntity.damage(DamageSource.GENERIC, damageAmount);
-				((HostileEntity) targetEntity).setTarget((LivingEntity) targetEntity);
-				if(targetEntity instanceof CreeperEntity || targetEntity instanceof SkeletonEntity)
-				{
-					((HostileEntity) targetEntity).setAiDisabled(true);
-				}
+			{
+				targetEntity.remove();
+				((HostileEntity) targetEntity).playSpawnEffects();
 			}
 		}
 	}

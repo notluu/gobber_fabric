@@ -1,5 +1,6 @@
 package com.kwpugh.gobber2;
 
+import com.kwpugh.gobber2.events.ToolTips;
 import com.kwpugh.gobber2.init.BlockInit;
 
 import net.fabricmc.api.ClientModInitializer;
@@ -17,7 +18,10 @@ public class Gobber2Client implements ClientModInitializer
     	BlockRenderLayerMapImpl.INSTANCE.putBlocks(RenderLayer.getCutout(),
 				BlockInit.GOBBER2_GLASS,
 				BlockInit.GOBBER2_GLASS_NETHER,
-				BlockInit.GOBBER2_GLASS_END
+				BlockInit.GOBBER2_GLASS_END,
+				BlockInit.CLEAR_GLASS
 		);
+    	
+    	ToolTips.init();
     }
 }

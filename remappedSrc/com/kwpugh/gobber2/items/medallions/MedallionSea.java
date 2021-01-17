@@ -40,6 +40,7 @@ public class MedallionSea extends Item
 	public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext)
 	{
 		tooltip.add(new TranslatableText("item.gobber2.gobber2_medallion_sea.tip1").formatted(Formatting.GREEN));
+		tooltip.add(new TranslatableText("item.gobber2.gobber2_medallion_sea.tip2").formatted(Formatting.GREEN));
 		tooltip.add(new TranslatableText("item.gobber2.while_in_inventory").formatted(Formatting.YELLOW));
 	} 
 }

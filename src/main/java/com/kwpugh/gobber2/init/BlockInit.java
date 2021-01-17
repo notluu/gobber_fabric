@@ -17,14 +17,12 @@ import com.kwpugh.gobber2.blocks.entities.BlockProtectorEntity;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricMaterialBuilder;
-import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.MaterialColor;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -114,16 +112,4 @@ public class BlockInit
 		BLOCK_PROTECTOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_protector", BlockEntityType.Builder.create(BlockProtectorEntity::new, BLOCK_PROTECTOR).build(null));
 		BLOCK_DEFENDER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_defender", BlockEntityType.Builder.create(BlockDefenderEntity::new, BLOCK_DEFENDER).build(null));
 	}
-	
-	
-	
-	// Fabric c tags used by the Ring of Miner
-	public static final Tag<Block> cobblestone = TagRegistry.block(new Identifier("c", "cobblestone"));
-	public static final Tag<Block> dirt = TagRegistry.block(new Identifier("c", "dirt"));
-	public static final Tag<Block> netherrack = TagRegistry.block(new Identifier("c", "netherrack"));
-	public static final Tag<Block> sand = TagRegistry.block(new Identifier("c", "sand"));
-	public static final Tag<Block> sandstone = TagRegistry.block(new Identifier("c", "sandstone"));
-	public static final Tag<Block> soul_ground = TagRegistry.block(new Identifier("c", "soul_ground"));
-	public static final Tag<Block> stone = TagRegistry.block(new Identifier("c", "stone"));
-	public static final Tag<Block> end_stones = TagRegistry.block(new Identifier("c", "end_stones"));
 }

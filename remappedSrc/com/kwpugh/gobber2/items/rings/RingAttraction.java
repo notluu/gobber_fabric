@@ -4,7 +4,8 @@ import java.util.List;
 
 import com.kwpugh.gobber2.Gobber2;
 
-import net.minecraft.block.Block;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.item.TooltipContext;
@@ -16,7 +17,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.predicate.entity.EntityPredicates;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -36,7 +36,7 @@ public class RingAttraction extends Item
         super(settings);
     }
 
-    static int configRange = Gobber2.getConfig().RINGS.ringAttractionRange;
+    static int configRange = Gobber2.CONFIG.GENERAL.ringAttractionRange;
     
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
@@ -44,15 +44,12 @@ public class RingAttraction extends Item
 		if(!world.isClient && isActive(stack))
 		{
 			ServerPlayerEntity player = (ServerPlayerEntity) entity;
-			MinecraftServer server = player.getServer();
-			
 			BlockPos playerPos = new BlockPos(player.getPos());
 			
 			// Check for a particular block that stops the attraction
 			for (BlockPos targetPos : BlockPos.iterateOutwards(playerPos, configRange, 5, configRange))
 			{
 				BlockState blockstate = world.getBlockState(targetPos);
-				Block block = blockstate.getBlock();
 				
 				if ((blockstate.getBlock() == Blocks.COAL_BLOCK))
 				{
@@ -85,7 +82,7 @@ public class RingAttraction extends Item
         {
         	toggleMode(magnet);
             
-            return new TypedActionResult<>(ActionResult.SUCCESS, magnet);
+            //return new TypedActionResult<>(ActionResult.SUCCESS, magnet);
         }
         
         return new TypedActionResult<>(ActionResult.SUCCESS, magnet);
@@ -166,7 +163,7 @@ public class RingAttraction extends Item
     	return isActive(magnet);
     }
     
-	@Override
+    @Environment(EnvType.CLIENT)
 	public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext)
 	{
 		tooltip.add(new TranslatableText("item.gobber2.gobber2_ring_attraction.tip1").formatted(Formatting.GREEN));

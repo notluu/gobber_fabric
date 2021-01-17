@@ -3,6 +3,8 @@ package com.kwpugh.gobber2.items.tools.areatools;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kwpugh.gobber2.init.TagInit;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
@@ -38,19 +40,19 @@ public class AreaToolUtil
             	
              	if(type == "hammer" && state.isToolRequired() && okToBreak)
             	{
-            		if(player.isUsingEffectiveTool(state))
+            		if(player.isUsingEffectiveTool(state) || block.isIn(TagInit.HAMMER_ADDITIONS))
             		{
             			if(!block.hasBlockEntity() || 
                 				!(block instanceof BlockWithEntity) || 
                 				!(block instanceof BlockEntityProvider))
                 		{
         					world.breakBlock(pos, false);
-        					Block.dropStacks(state, world, pos, null, player, stack);   // USe this version to account for enchantments on stack        			
+        					Block.dropStacks(state, world, pos, null, player, stack);   // Use this version to account for enchantments on stack        			
                 		}
             		}          		
             	}
              	
-            	if(type == "excavator")
+            	if(type == "excavator" && stack.isEffectiveOn(state)|| block.isIn(TagInit.EXCAVATOR_ADDITIONS))
             	{
             		if(player.isUsingEffectiveTool(state))
             		{
@@ -59,7 +61,7 @@ public class AreaToolUtil
                 				!(block instanceof BlockEntityProvider))
                 		{
             				world.breakBlock(pos, false);
-        					Block.dropStacks(state, world, pos, null, player, stack);   // USe this version to account for enchantments on stac
+        					Block.dropStacks(state, world, pos, null, player, stack);   // Use this version to account for enchantments on stac
                 		}
             		}           		
             	}                             

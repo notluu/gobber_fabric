@@ -1,9 +1,11 @@
 package com.kwpugh.gobber2.util;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class PlayerSpecialAbilities
@@ -13,7 +15,11 @@ public class PlayerSpecialAbilities
 	{
 		if(player.age % 180 == 0)
 		{
-			player.heal(amount);
+			if(player.getHealth() < player.getMaxHealth())
+			//if(player.getHealth() < 20)
+			{
+				player.heal(amount);
+			}		
 		}
 		
     	return;
@@ -30,8 +36,8 @@ public class PlayerSpecialAbilities
     	return;
 	}
 	
-	//Slower increase of yellow hearts on tick update
-	public static void giveSlowAbsorption(World world, PlayerEntity player, ItemStack itemstack)
+	//Lesser yellow hearts on tick update
+	public static void giveLesserAbsorption(World world, PlayerEntity player, ItemStack itemstack)
 	{
 		float current = player.getAbsorptionAmount();
 		
@@ -63,8 +69,8 @@ public class PlayerSpecialAbilities
     	return;
 	}
 	
-	//Faster increase of yellow hearts on tick update
-	public static void giveFastAbsorption(World world, PlayerEntity player, ItemStack itemstack)
+	//Greater yellow hearts on tick update
+	public static void giveGreaterAbsorption(World world, PlayerEntity player, ItemStack itemstack)
 	{
 		float current = player.getAbsorptionAmount();
 		
@@ -97,7 +103,15 @@ public class PlayerSpecialAbilities
 	
 	public static void givePhoenixEffect(World world, PlayerEntity player)
 	{
-		if(player.isOnFire())
+		BlockPos pos = player.getBlockPos();
+		
+		if(    world.getBlockState(pos).getBlock() == Blocks.MAGMA_BLOCK           )
+		{
+			player.setNoGravity(true);			
+		}
+		
+		if(player.isOnFire() ||
+				player.isInLava())
 		{
 			StatusEffectInstance effect = new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 8, 0, false, false);
 			StatusEffectInstance effect2 = new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 8, 0, false, false);

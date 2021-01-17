@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:overworld",
+  "type": "gobber2:mining",
   "generator": {
     "biome_source": {
       "humidity_noise": {

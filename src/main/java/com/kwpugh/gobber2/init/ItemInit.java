@@ -69,11 +69,9 @@ import com.kwpugh.gobber2.lists.ArmorMaterialList;
 import com.kwpugh.gobber2.lists.FoodList;
 import com.kwpugh.gobber2.lists.ToolMaterialList;
 
-import net.fabricmc.fabric.api.tag.TagRegistry;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.Item;
 import net.minecraft.item.MushroomStewItem;
-import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
@@ -368,10 +366,4 @@ public class ItemInit
 			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_special_item"), GOBBER2_SPECIAL_ITEM);
 		}
 	}
-	
-	// Tag used by Lucky Block extra loot feature
-	public static final Tag<Item> COMMON_LOOT = TagRegistry.item(new Identifier("c", "common_loot"));
-	public static final Tag<Item> UNCOOMMON_LOOT = TagRegistry.item(new Identifier("c", "uncommon_loot"));
-	public static final Tag<Item> RARE_LOOT = TagRegistry.item(new Identifier("c", "rare_loot"));
-	public static final Tag<Item> VERY_RARE_LOOT = TagRegistry.item(new Identifier("c", "very_rare_loot"));	
 }

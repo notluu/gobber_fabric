@@ -28,6 +28,8 @@ public class ModExcavator extends ShovelItem
 		super(material, attackDamage, attackSpeed, settings);
 	}
 
+	int radius = 1;
+	
     @Override
     public boolean isEffectiveOn(BlockState state)
     {
@@ -39,7 +41,7 @@ public class ModExcavator extends ShovelItem
     {
         if(!playerIn.isSneaking() && playerIn.getMainHandStack().isEffectiveOn(world.getBlockState(pos)))
     	{
-        	AreaToolUtil.attemptBreakNeighbors(world, playerIn, 1);
+        	AreaToolUtil.attemptBreakNeighbors(world, playerIn, radius, "excavator", false);
         }
 
         return true;

@@ -23,8 +23,6 @@ public class GrowingUtil
 	//  Accelerates growth in area of effect
 	public static void growCrops(World world, PlayerEntity player, int baseTickDelay, int radius)
 	{
-		ServerWorld serverWorld = (ServerWorld) world;
-	
 		BlockPos playerPos = new BlockPos(player.getPos());
 	
 		for (BlockPos targetPos : BlockPos.iterateOutwards(playerPos, radius, 5, radius))

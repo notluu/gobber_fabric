@@ -16,7 +16,8 @@
     "PlayerEntityMixinAttack",
     "VillagerEntityMixinInteract",
     "AbstractDonkeyEntityMixinInteract",
-    "WanderingTraderEntityMixinInteract"
+    "WanderingTraderEntityMixinInteract",
+    "SpawnHelperMixin"
   ],
   "client": [
   	"ClientPlayerEntityMixinFallFlying"
