@@ -26,7 +26,7 @@ public abstract class PlayerEntityMixinFallFlying extends LivingEntity
   }
 
   @Inject(method = "checkFallFlying", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/entity/player/PlayerEntity;getEquippedStack(Lnet/minecraft/entity/EquipmentSlot;)Lnet/minecraft/item/ItemStack;"), cancellable = true)
-  public void checkFallFlyingMixin(CallbackInfoReturnable<Boolean> info)
+  public void gobberCheckFallFlying(CallbackInfoReturnable<Boolean> info)
   {
     ItemStack itemStack = this.getEquippedStack(EquipmentSlot.CHEST);
     if (itemStack.getItem() == ItemInit.GOBBER2_CHESTPLATE_END) {

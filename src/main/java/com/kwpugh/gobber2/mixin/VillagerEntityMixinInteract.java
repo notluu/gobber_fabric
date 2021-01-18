@@ -17,7 +17,7 @@ import net.minecraft.util.Hand;
 public class VillagerEntityMixinInteract
 {
 	@Inject(method = "interactMob", at = @At(value = "HEAD"), cancellable = true)
-	public void interactMob(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir)
+	public void gobberInteractMob(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir)
 	{
 		ItemStack stack = player.getStackInHand(hand);
 		if(stack.getItem() == ItemInit.GOBBER2_STAFF_ENSNAREMENT) 

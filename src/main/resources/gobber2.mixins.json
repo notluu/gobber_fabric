@@ -17,7 +17,11 @@
     "VillagerEntityMixinInteract",
     "AbstractDonkeyEntityMixinInteract",
     "WanderingTraderEntityMixinInteract",
-    "SpawnHelperMixin"
+    "SpawnHelperMixin",
+    "ZombieEntityMixin",
+    "PiglinEntityMixin",
+    "PiglinBruteEntityMixin",
+     "VexEntityMixin"
   ],
   "client": [
   	"ClientPlayerEntityMixinFallFlying"

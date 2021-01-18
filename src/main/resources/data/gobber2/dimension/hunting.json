@@ -47,6 +47,6 @@
     },
     "seed": 1202021,
     "settings": "minecraft:overworld",
-    "type": "gobber2:hunting"
+    "type": "minecraft:noise"
   }
 }

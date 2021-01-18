@@ -320,6 +320,8 @@
 	 "enchantment.gobber2.quickuse": "QuickUse",
 	
 	 "effect.gobber2.knowledge": "Knowledge Boost",
+	 
+	 "item.gobber2.diamond_nugget": "Diamond Nugget",
 	
 	 "itemGroup.gobber2.gobber2_group": "Gobber 2"
 }
