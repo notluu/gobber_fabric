@@ -15,14 +15,14 @@ public class TagInit
 	public static final Tag<Item> VERY_RARE_LOOT = TagRegistry.item(new Identifier("c", "very_rare_loot"));	
 	
 	// Fabric c tags used by the Ring of Miner
-	public static final Tag<Block> cobblestone = TagRegistry.block(new Identifier("c", "cobblestone"));
-	public static final Tag<Block> dirt = TagRegistry.block(new Identifier("c", "dirt"));
-	public static final Tag<Block> netherrack = TagRegistry.block(new Identifier("c", "netherrack"));
-	public static final Tag<Block> sand = TagRegistry.block(new Identifier("c", "sand"));
-	public static final Tag<Block> sandstone = TagRegistry.block(new Identifier("c", "sandstone"));
-	public static final Tag<Block> soul_ground = TagRegistry.block(new Identifier("c", "soul_ground"));
-	public static final Tag<Block> stone = TagRegistry.block(new Identifier("c", "stone"));
-	public static final Tag<Block> end_stones = TagRegistry.block(new Identifier("c", "end_stones"));
+	public static final Tag<Block> COBBLESTONE = TagRegistry.block(new Identifier("c", "cobblestone"));
+	public static final Tag<Block> DIRT = TagRegistry.block(new Identifier("c", "dirt"));
+	public static final Tag<Block> NETHERRACK = TagRegistry.block(new Identifier("c", "netherrack"));
+	public static final Tag<Block> SAND = TagRegistry.block(new Identifier("c", "sand"));
+	public static final Tag<Block> SANDSTONE = TagRegistry.block(new Identifier("c", "sandstone"));
+	public static final Tag<Block> SOUL_GROUND = TagRegistry.block(new Identifier("c", "soul_ground"));
+	public static final Tag<Block> STONE = TagRegistry.block(new Identifier("c", "stone"));
+	public static final Tag<Block> END_STONES = TagRegistry.block(new Identifier("c", "end_stones"));
 	
 	// Gobber tag for adding more blocks to Ring of the Miner breaking
 	public static final Tag<Block> RING_MINER_ADDITIONS = TagRegistry.block(new Identifier("gobber2", "ring_miner_additions"));
@@ -31,6 +31,9 @@ public class TagInit
 	public static final Tag<Block> HAMMER_ADDITIONS = TagRegistry.block(new Identifier("gobber2", "hammer_additions"));
 	public static final Tag<Block> EXCAVATOR_ADDITIONS = TagRegistry.block(new Identifier("gobber2", "excavator_additions"));
 	
+	// Gobber tag for adding items to Ring of Repair blacklist
+	public static final Tag<Item> RING_REPAIR_BLACKLIST = TagRegistry.item(new Identifier("gobber2", "ring_repair_blacklist"));
+		
 	public static void registerTags()
 	{
 		// Register tags
