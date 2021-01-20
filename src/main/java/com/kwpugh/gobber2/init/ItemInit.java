@@ -1,7 +1,6 @@
 package com.kwpugh.gobber2.init;
 
 import com.kwpugh.gobber2.Gobber2;
-import com.kwpugh.gobber2.items.SpecialItem;
 import com.kwpugh.gobber2.items.armor.EndArmor;
 import com.kwpugh.gobber2.items.armor.GobberArmor;
 import com.kwpugh.gobber2.items.armor.NetherArmor;
@@ -16,6 +15,7 @@ import com.kwpugh.gobber2.items.medallions.MedallionBreathing;
 import com.kwpugh.gobber2.items.medallions.MedallionExp;
 import com.kwpugh.gobber2.items.medallions.MedallionHero;
 import com.kwpugh.gobber2.items.medallions.MedallionSea;
+import com.kwpugh.gobber2.items.other.SpecialItem;
 import com.kwpugh.gobber2.items.rings.RingAbove;
 import com.kwpugh.gobber2.items.rings.RingAirWalking;
 import com.kwpugh.gobber2.items.rings.RingAscent;

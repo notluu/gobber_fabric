@@ -1,4 +1,4 @@
-package com.kwpugh.gobber2.items;
+package com.kwpugh.gobber2.items.other;
 
 import java.util.List;
 import java.util.Random;
