@@ -29,6 +29,7 @@ public class SwordEndSniper extends SwordItem implements Wearable
 	}
 	
 	static int cooldown = Gobber2.CONFIG.GENERAL.swordSniperCooldoown;
+	static boolean unbreakable = Gobber2.CONFIG.GENERAL.unbreakableEndTools;
 	
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand)
@@ -59,7 +60,10 @@ public class SwordEndSniper extends SwordItem implements Wearable
 	@Override
 	public void onCraft(ItemStack stack, World world, PlayerEntity player) 
 	{
-		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		if(unbreakable)
+		{
+			stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		}
 	}
 		
 	@Override

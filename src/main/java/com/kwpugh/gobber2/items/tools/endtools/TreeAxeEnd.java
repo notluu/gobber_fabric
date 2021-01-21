@@ -2,6 +2,7 @@ package com.kwpugh.gobber2.items.tools.endtools;
 
 import java.util.List;
 
+import com.kwpugh.gobber2.Gobber2;
 import com.kwpugh.gobber2.items.tools.areatools.ModTreeAxe;
 
 import net.minecraft.client.item.TooltipContext;
@@ -20,10 +21,15 @@ public class TreeAxeEnd extends ModTreeAxe
 		super(material, attackDamage, attackSpeed, settings);
 	}
    
+	static boolean unbreakable = Gobber2.CONFIG.GENERAL.unbreakableEndTools;
+	
 	@Override
 	public void onCraft(ItemStack stack, World world, PlayerEntity player) 
 	{
-		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		if(unbreakable)
+		{
+			stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		}
 	}
 	
 	@Override

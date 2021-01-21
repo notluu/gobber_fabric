@@ -35,6 +35,7 @@ public class ExcavatorEnd extends ShovelItem
 
 	int radius = 1;
 	static boolean enable5x5 = Gobber2.CONFIG.GENERAL.enableEndExcavator5x5;
+	static boolean unbreakable = Gobber2.CONFIG.GENERAL.unbreakableEndTools;
 	
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand)
@@ -86,7 +87,10 @@ public class ExcavatorEnd extends ShovelItem
 	@Override
 	public void onCraft(ItemStack stack, World world, PlayerEntity player) 
 	{
-		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		if(unbreakable)
+		{
+			stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		}
 	}
 	
 	@Override

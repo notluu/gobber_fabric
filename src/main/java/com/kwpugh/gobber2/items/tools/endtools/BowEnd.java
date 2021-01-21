@@ -3,6 +3,8 @@ package com.kwpugh.gobber2.items.tools.endtools;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
+import com.kwpugh.gobber2.Gobber2;
+
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
@@ -27,10 +29,15 @@ public class BowEnd extends BowItem
 		super(settings);
 	}
 
+	static boolean unbreakable = Gobber2.CONFIG.GENERAL.unbreakableEndTools;
+	
 	@Override
 	public void onCraft(ItemStack stack, World world, PlayerEntity player) 
 	{
-		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		if(unbreakable)
+		{
+			stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		}
 	}
 	
 	@Override

@@ -164,7 +164,54 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
 		public boolean enableHammers = true;
 		public boolean enableExcavators = true;
 		public boolean enablePaxels = true;
-		
+	
+	   	@Comment("\n"
+    			+"\n"
+    			+"\n"
+    			+"******************************"
+    			+"\nBow Durability"
+    			+"\n******************************")
+    	public int gobberBowDurability = 3800;
+	   	public int gobberNetherBowDurability = 5200;
+	   	public int gobberEndBowDurability = 8000;
+
+      	@Comment("\n"
+    			+"\n"
+    			+"\n"
+    			+"******************************"
+    			+"\nGobber Tool Material Stats"
+    			+"\n******************************")
+    	public int gobberDurability = 3800;
+       	public float gobberMiningSpeed = 9.0F;
+       	public float gobberAttackDamage = 1.0F;
+       	public int gobberMiningLevel = 4;
+       	public int gobberEnchantability = 20;
+       	
+      	@Comment("\n"
+    			+"\n"
+    			+"\n"
+    			+"******************************"
+    			+"\nGobber Nether Tool Material Stats"
+    			+"\n******************************")
+    	public int gobberNetherDurability = 5200;
+       	public float gobberNetherMiningSpeed = 12.0F;
+       	public float gobberNetherAttackDamage = 1.0F;
+       	public int gobberNetherMiningLevel = 5;
+       	public int gobberNetherEnchantability = 25;
+
+      	@Comment("\n"
+    			+"\n"
+    			+"\n"
+    			+"******************************"
+    			+"\nGobber End Tool Material Stats"
+    			+"\n******************************")
+      	public boolean unbreakableEndTools = true;
+    	public int gobberEndDurability = 8000;
+       	public float gobberEndMiningSpeed = 14.0F;
+       	public float gobberEndAttackDamage = 1.0F;
+       	public int gobberEndMiningLevel = 5;
+       	public int gobberEndEnchantability = 30;
+       	    
 		@Comment("\n"
 				+"\n"
 				+ "***********************"
@@ -175,6 +222,41 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
 		public boolean enableEndPerks = true;
 		public boolean enablePhantomProtection = true;
 		
+       	@Comment("\n"
+    			+"\n"
+    			+"\n"
+    			+"******************************"
+    			+"\nGobber Armor Material Stats"
+    			+"\n******************************")
+    	public int gobberDurabilityMultiplier = 71;
+      	public int gobberArmorEnchantability = 25;
+      	public float gobberToughness = 2.5F;
+      	public float gobberKnockbackResistance = 0.10F;
+       	
+       	@Comment("\n"
+    			+"\n"
+    			+"\n"
+    			+"******************************"
+    			+"\nGobber Nether Armor Material Stats"
+    			+"\n******************************")
+       	public int gobberNetherDurabilityMultiplier = 83;
+      	public int gobberNetherArmorEnchantability = 30;
+      	public float gobberNetherToughness = 2.75F;
+      	public float gobberNetherKnockbackResistance = 0.10F; 
+       	
+       	@Comment("\n"
+    			+"\n"
+    			+"\n"
+    			+"******************************"
+    			+"\nGobber End Armor Material Stats"
+    			+"\n******************************")
+       	public boolean unbreakableEndArmor = true;
+       	public int gobberEndDurabilityMultiplier = 100;
+      	public int gobberEndArmorEnchantability = 30;
+      	public float gobberEndToughness = 3.0F;
+      	public float gobberEndKnockbackResistance = 0.30F;  
+       	
+       	
 		@Comment("\n"
 				+"\n"
 				+ "***********************"

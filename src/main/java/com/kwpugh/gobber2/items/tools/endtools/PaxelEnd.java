@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
+import com.kwpugh.gobber2.Gobber2;
 import com.kwpugh.gobber2.items.tools.areatools.ObsidianBreaking;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
@@ -75,6 +76,8 @@ public class PaxelEnd extends MiningToolItem
 	private static final Set<Block> EFFECTIVE_BLOCKS;
 	private static final Map<Block, BlockState> PATH_BLOCKSTATES;
 
+	static boolean unbreakable = Gobber2.CONFIG.GENERAL.unbreakableEndTools;
+	
 	public PaxelEnd(ToolMaterial material, float attackDamage, float attackSpeed, Item.Settings settings) 
 	{
 		super(attackDamage, attackSpeed, material, EFFECTIVE_BLOCKS, settings);
@@ -219,7 +222,10 @@ public class PaxelEnd extends MiningToolItem
 	@Override
 	public void onCraft(ItemStack stack, World world, PlayerEntity player) 
 	{
-		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		if(unbreakable)
+		{
+			stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		}
 	}
 	
 	@Override

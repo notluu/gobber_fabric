@@ -12,7 +12,6 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -27,6 +26,7 @@ public class EndArmor extends ArmorItem
 	}
 	
 	static boolean enablePerks = Gobber2.CONFIG.GENERAL.enableEndPerks;
+	static boolean unbreakable = Gobber2.CONFIG.GENERAL.unbreakableEndArmor;
 	
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
@@ -63,13 +63,9 @@ public class EndArmor extends ArmorItem
 	@Override
 	public void onCraft(ItemStack stack, World world, PlayerEntity player) 
 	{
-		stack.getOrCreateTag().putBoolean("Unbreakable", true);
-		
-		Item item = stack.getItem();
-				
-		if(item == ItemInit.GOBBER2_BOOTS_END)
+		if(unbreakable)
 		{
-			
+			stack.getOrCreateTag().putBoolean("Unbreakable", true);
 		}
 	}
 	
