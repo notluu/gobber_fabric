@@ -20,7 +20,7 @@ public class EnchantmentInit
 	static boolean untouchable = Gobber2.CONFIG.GENERAL.enableUntouchable;
 	static boolean fasterObsidian = Gobber2.CONFIG.GENERAL.enableFasterObsidian;
 	static boolean quickUse = Gobber2.CONFIG.GENERAL.enableQuickUse;
-		
+			
 	public static final Enchantment SMITHBLADE = new SmithBladeEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
 	public static final Enchantment REBUFFING = new RebuffingEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR_CHEST, new EquipmentSlot[]{EquipmentSlot.CHEST});
 	public static final Enchantment UNTOUCHABLE = new UntouchableEnchantment(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR_LEGS, new EquipmentSlot[]{EquipmentSlot.LEGS});
@@ -48,7 +48,7 @@ public class EnchantmentInit
     	{
     		Registry.register(Registry.ENCHANTMENT, new Identifier(Gobber2.MOD_ID, "faster_obsidian"), FASTEROBSIDIAN);
     	} 
-     	
+     
      	if(quickUse)
      	{
      		Registry.register(Registry.ENCHANTMENT, new Identifier(Gobber2.MOD_ID, "quickuse"), QUICKUSE);
