@@ -31,8 +31,8 @@ public class LuckyBlock  extends OreBlock
 		this.settings.requiresTool();
 	}
 
-	static boolean enableExtraLoot = Gobber2.CONFIG.GENERAL.enableExtraLoot;
-	static boolean enableFortune = Gobber2.CONFIG.GENERAL.enableFortune;
+	static boolean enableExtraLoot = Gobber2.CONFIG.ORES.enableExtraLoot;
+	static boolean enableFortune = Gobber2.CONFIG.ORES.enableFortune;
 	
 	Random random = new Random();
 	

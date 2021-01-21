@@ -21,7 +21,9 @@
     "ZombieEntityMixin",
     "PiglinEntityMixin",
     "PiglinBruteEntityMixin",
-     "VexEntityMixin"
+    "VexEntityMixin",
+    "EndermanEntityMixin",
+    "PlayerEntityMixinSolidFooting"
   ],
   "client": [
   	"ClientPlayerEntityMixinFallFlying"

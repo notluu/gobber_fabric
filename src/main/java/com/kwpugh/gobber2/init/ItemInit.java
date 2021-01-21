@@ -83,6 +83,7 @@ public class ItemInit
 	static boolean enableHammers = Gobber2.CONFIG.GENERAL.enableHammers;
 	static boolean enableExcavators = Gobber2.CONFIG.GENERAL.enableExcavators;
 	static boolean enablePaxels = Gobber2.CONFIG.GENERAL.enablePaxels;
+	static int staffTransformationDurability = Gobber2.CONFIG.GENERAL.staffTransformationDurability;
 	
 	public static final Item GOBBER2_GLOB = new Item((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_GLOB_NETHER = new Item((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
@@ -209,7 +210,7 @@ public class ItemInit
 	public static final Item GOBBER2_MEDALLION_SEA = new MedallionSea((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
 
 	public static final Item GOBBER2_STAFF_CLEARING = new StaffClearing((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
-	public static final Item GOBBER2_STAFF_TRANSFORMATION = new StaffTransformation((new Item.Settings()).maxDamage(1025).group(Gobber2.GOBBER2_GROUP));
+	public static final Item GOBBER2_STAFF_TRANSFORMATION = new StaffTransformation((new Item.Settings()).maxDamage(staffTransformationDurability).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_STAFF_ENSNAREMENT = new StaffEnsnarement((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_STAFF_FARMER = new StaffFarmer((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_STAFF_STARS = new StaffStars((new Item.Settings()).maxCount(1).group(Gobber2.GOBBER2_GROUP));
