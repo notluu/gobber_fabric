@@ -68,10 +68,10 @@ import com.kwpugh.gobber2.items.tools.endtools.SwordEndSniper;
 import com.kwpugh.gobber2.items.tools.endtools.TreeAxeEnd;
 import com.kwpugh.gobber2.lists.FoodList;
 import com.kwpugh.gobber2.lists.GobberArmorMaterial;
-import com.kwpugh.gobber2.lists.GobberEndArmorMaterial;
-import com.kwpugh.gobber2.lists.GobberEndToolMaterial;
-import com.kwpugh.gobber2.lists.GobberNetherArmorMaterial;
-import com.kwpugh.gobber2.lists.GobberNetherToolMaterial;
+import com.kwpugh.gobber2.lists.EndArmorMaterial;
+import com.kwpugh.gobber2.lists.EndToolMaterial;
+import com.kwpugh.gobber2.lists.NetherArmorMaterial;
+import com.kwpugh.gobber2.lists.NetherToolMaterial;
 import com.kwpugh.gobber2.lists.GobberToolMaterial;
 
 import net.minecraft.entity.EquipmentSlot;
@@ -95,11 +95,11 @@ public class ItemInit
 	static int endBowDurability = Gobber2.CONFIG.GENERAL.gobberEndBowDurability;
 	
 	public static final ArmorMaterial GOBBER_ARMOR_MATERIAL = new GobberArmorMaterial();
-	public static final ArmorMaterial GOBBER_NETHER_ARMOR_MATERIAL = new GobberNetherArmorMaterial();
-	public static final ArmorMaterial GOBBER_END_ARMOR_MATERIAL = new GobberEndArmorMaterial();
+	public static final ArmorMaterial GOBBER_NETHER_ARMOR_MATERIAL = new NetherArmorMaterial();
+	public static final ArmorMaterial GOBBER_END_ARMOR_MATERIAL = new EndArmorMaterial();
 	public static final ToolMaterial GOBBER_TOOL_MATERIAL = new GobberToolMaterial();
-	public static final ToolMaterial GOBBER_NETHER_TOOL_MATERIAL = new GobberNetherToolMaterial();
-	public static final ToolMaterial GOBBER_END_TOOL_MATERIAL = new GobberEndToolMaterial();
+	public static final ToolMaterial GOBBER_NETHER_TOOL_MATERIAL = new NetherToolMaterial();
+	public static final ToolMaterial GOBBER_END_TOOL_MATERIAL = new EndToolMaterial();
 	
 	public static final Item GOBBER2_GLOB = new Item((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));
 	public static final Item GOBBER2_GLOB_NETHER = new Item((new Item.Settings()).group(Gobber2.GOBBER2_GROUP));

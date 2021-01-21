@@ -9,16 +9,16 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
-public class GobberEndArmorMaterial implements ArmorMaterial
+public class NetherArmorMaterial implements ArmorMaterial
 {
-	private static int durabilityMultiplier = Gobber2.CONFIG.GENERAL.gobberEndDurabilityMultiplier;
-	private static int enchantability = Gobber2.CONFIG.GENERAL.gobberEndArmorEnchantability;
-	private static float toughness = Gobber2.CONFIG.GENERAL.gobberEndToughness;
-	private static float knochback = Gobber2.CONFIG.GENERAL.gobberEndKnockbackResistance;
+	private static int durabilityMultiplier = Gobber2.CONFIG.GENERAL.gobberNetherDurabilityMultiplier;
+	private static int enchantability = Gobber2.CONFIG.GENERAL.gobberNetherArmorEnchantability;
+	private static float toughness = Gobber2.CONFIG.GENERAL.gobberNetherToughness;
+	private static float knochback = Gobber2.CONFIG.GENERAL.gobberNetherKnockbackResistance;
 	
 	
 	private static final int[] BASE_DURABILITY = new int[]{13, 15, 16, 11};
-    private static final int[] PROTECTION_AMOUNT = new int[]{8, 11, 13, 8};
+    private static final int[] PROTECTION_AMOUNT = new int[]{7, 10, 12, 7};
     
 	@Override
 	public int getDurability(EquipmentSlot slot) 
@@ -47,13 +47,13 @@ public class GobberEndArmorMaterial implements ArmorMaterial
 	@Override
 	public Ingredient getRepairIngredient() 
 	{
-		return Ingredient.ofItems(ItemInit.GOBBER2_INGOT_END);
+		return Ingredient.ofItems(ItemInit.GOBBER2_INGOT_NETHER);
 	}
 
 	@Override
 	public String getName() 
 	{
-		return "gobber2_end";
+		return "gobber2_nether";
 	}
 
 	@Override

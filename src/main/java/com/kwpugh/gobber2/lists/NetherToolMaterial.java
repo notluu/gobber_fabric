@@ -6,7 +6,7 @@ import com.kwpugh.gobber2.init.ItemInit;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
-public class GobberNetherToolMaterial implements ToolMaterial
+public class NetherToolMaterial implements ToolMaterial
 {
 	private static int durability = Gobber2.CONFIG.GENERAL.gobberNetherDurability;
 	private static float miningSpeed = Gobber2.CONFIG.GENERAL.gobberNetherMiningSpeed;

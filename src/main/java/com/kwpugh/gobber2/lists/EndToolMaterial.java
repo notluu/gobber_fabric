@@ -6,7 +6,7 @@ import com.kwpugh.gobber2.init.ItemInit;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
-public class GobberEndToolMaterial implements ToolMaterial
+public class EndToolMaterial implements ToolMaterial
 {
 	private static int durability = Gobber2.CONFIG.GENERAL.gobberEndDurability;
 	private static float miningSpeed = Gobber2.CONFIG.GENERAL.gobberEndMiningSpeed;

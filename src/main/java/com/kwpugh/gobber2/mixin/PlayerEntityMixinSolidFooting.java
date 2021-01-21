@@ -34,7 +34,10 @@ public abstract class PlayerEntityMixinSolidFooting extends LivingEntity
 
 		if (EnchantmentHelper.getLevel(EnchantmentInit.SOLIDFOOTING, self.getEquippedStack(EquipmentSlot.FEET)) > 0)
 		{
-			cir.setReturnValue(f * 5);
+			if(!self.isOnGround())
+			{
+				cir.setReturnValue(f * 2);
+			}
 		}
 	}
 }
