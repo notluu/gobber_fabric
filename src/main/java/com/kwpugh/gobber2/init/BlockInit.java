@@ -50,9 +50,9 @@ public class BlockInit
 	
 	
 	public static final Block BLOCK_HEALER = new BlockHealer(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
-	public static final Block BLOCK_MATURATOR = new BlockMaturator(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
-	public static final Block BLOCK_PROTECTOR = new BlockProtector(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+	public static final Block BLOCK_MATURATOR = new BlockMaturator(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));	
 	public static final Block BLOCK_DEFENDER = new BlockDefender(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+	public static final Block BLOCK_PROTECTOR = new BlockProtector(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
 	
 	public static void registerBlocks()
 	{
@@ -73,9 +73,9 @@ public class BlockInit
 			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "clear_glass"), CLEAR_GLASS);	
 			
 			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_healer"), BLOCK_HEALER);
-			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_maturator"), BLOCK_MATURATOR);
-			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_protector"), BLOCK_PROTECTOR);
+			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_maturator"), BLOCK_MATURATOR);			
 			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_defender"), BLOCK_DEFENDER);
+			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_protector"), BLOCK_PROTECTOR);
 		}
 	}
 	
@@ -98,9 +98,9 @@ public class BlockInit
 			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "clear_glass"), new BlockItem(CLEAR_GLASS, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
 			
 			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_healer"), new BlockItem(BLOCK_HEALER, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
-			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_maturator"), new BlockItem(BLOCK_MATURATOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
-			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_protector"), new BlockItem(BLOCK_PROTECTOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_maturator"), new BlockItem(BLOCK_MATURATOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));			
 			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_defender"), new BlockItem(BLOCK_DEFENDER, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
+			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_protector"), new BlockItem(BLOCK_PROTECTOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
 		}
 	}
 	
@@ -109,7 +109,7 @@ public class BlockInit
 		// Register block entities here
 		BLOCK_HEALER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_healer", BlockEntityType.Builder.create(BlockHealerEntity::new, BLOCK_HEALER).build(null));
 		BLOCK_MATURATOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_maturator", BlockEntityType.Builder.create(BlockMaturatorEntity::new, BLOCK_MATURATOR).build(null));
-		BLOCK_PROTECTOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_protector", BlockEntityType.Builder.create(BlockProtectorEntity::new, BLOCK_PROTECTOR).build(null));
 		BLOCK_DEFENDER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_defender", BlockEntityType.Builder.create(BlockDefenderEntity::new, BLOCK_DEFENDER).build(null));
+		BLOCK_PROTECTOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_protector", BlockEntityType.Builder.create(BlockProtectorEntity::new, BLOCK_PROTECTOR).build(null));
 	}
 }

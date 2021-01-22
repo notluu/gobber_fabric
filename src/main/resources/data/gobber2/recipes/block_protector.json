@@ -12,19 +12,19 @@
     {
         "A":
         {
-            "item": "gobber2:gobber2_ingot_nether"
+            "item": "gobber2:gobber2_ingot_end"
         },
         "B":
         {
-            "item": "minecraft:red_concrete"
+            "item": "gobber2:gobber2_block_end"
         },
         "C":
         {
-            "item": "gobber2:block_healer"
+            "item": "gobber2:block_defender"
         },
         "D":
         {
-            "item": "gobber2:gobber2_ring_nether"
+            "item": "gobber2:gobber2_ring_end"
         }
     },
     
