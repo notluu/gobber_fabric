@@ -30,13 +30,13 @@ public abstract class PlayerEntityMixinSolidFooting extends LivingEntity
 	private void gobberGetBlockBreakingSpeed(BlockState state, CallbackInfoReturnable<Float> cir)
 	{		
 		PlayerEntity self = (PlayerEntity) (Object) this;
-		float f = self.inventory.getBlockBreakingSpeed(state);
+		float speed = self.inventory.getBlockBreakingSpeed(state);		
 
 		if (EnchantmentHelper.getLevel(EnchantmentInit.SOLIDFOOTING, self.getEquippedStack(EquipmentSlot.FEET)) > 0)
 		{
-			if(!self.isOnGround())
+			if(speed > 1.0F && !self.isOnGround())
 			{
-				cir.setReturnValue(f * 2);
+				cir.setReturnValue(speed);
 			}
 		}
 	}

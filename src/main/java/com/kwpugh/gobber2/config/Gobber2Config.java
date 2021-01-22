@@ -183,7 +183,7 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
     			+"\n******************************")
     	public int gobberDurability = 3800;
        	public float gobberMiningSpeed = 9.0F;
-       	public float gobberAttackDamage = 1.0F;
+       	public float gobberAttackDamage = 9.0F;
        	public int gobberMiningLevel = 4;
        	public int gobberEnchantability = 20;
        	
@@ -195,7 +195,7 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
     			+"\n******************************")
     	public int gobberNetherDurability = 5200;
        	public float gobberNetherMiningSpeed = 12.0F;
-       	public float gobberNetherAttackDamage = 1.0F;
+       	public float gobberNetherAttackDamage = 9.0F;
        	public int gobberNetherMiningLevel = 5;
        	public int gobberNetherEnchantability = 25;
 
@@ -208,7 +208,7 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
       	public boolean unbreakableEndTools = true;
     	public int gobberEndDurability = 8000;
        	public float gobberEndMiningSpeed = 14.0F;
-       	public float gobberEndAttackDamage = 1.0F;
+       	public float gobberEndAttackDamage = 9.0F;
        	public int gobberEndMiningLevel = 5;
        	public int gobberEndEnchantability = 30;
        	    
@@ -294,17 +294,13 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
 				+"\n"
 				+ "***********************"
  	    		+"\nSpecial Item"
- 	    		+"\n***********************")
-		public boolean enableSpecialItem = true;
-	    
-		@Comment("\n"
 				+"\n"
-				+ "***********************"
 				+ "\nItem provides a one-time random teleport"
 	            +"\nand is consumed after successful teleport."
 	            +"\nMin/Max range from world spawn to search"
 		    	+"\nItem does NOT have a standard recipe"
 		    	+ "\n***********************") 
+		public boolean enableSpecialItem = true;
 		public int specialItemMin = 20000;
 		public int specialItemMax = 75000;
     }

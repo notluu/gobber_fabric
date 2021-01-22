@@ -225,12 +225,14 @@
 	"item.gobber2.gobber2_ring_explorer.tip5": "Welcome to the Minging World.",
 	"item.gobber2.gobber2_ring_explorer.tip6": "Welcome back to the Overworld.",
 	"item.gobber2.gobber2_ring_explorer.tip7": "Please try another spot.",
+	"item.gobber2.gobber2_ring_explorer.tip8": "Still checking, please continue to hold",
 	
 	"item.gobber2.gobber2_ring_above": "Ring of Above (Below)",
 	"item.gobber2.gobber2_ring_above.tip1": "Teleports the player to a safe",
 	"item.gobber2.gobber2_ring_above.tip2": "spot farthest above or below",
 	"item.gobber2.gobber2_ring_above.tip3": "Right-click to teleport up",
 	"item.gobber2.gobber2_ring_above.tip4": "Sneak + right-click to teleport down",
+	"item.gobber2.gobber2_ring_above.tip5": "Does not work in this world",
 	
 	"item.gobber2.gobber2_ring_teleport": "Ring of Teleport",
 	"item.gobber2.gobber2_ring_teleport.tip1": "Teleport to stored locations",
