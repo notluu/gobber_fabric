@@ -62,7 +62,7 @@ public class BlockEffects
 			targetEntity = (Entity)iterator2.next();
 			if(targetEntity instanceof HostileEntity)
 			{				
-				targetEntity.remove();
+				targetEntity.remove(null);
 				((HostileEntity) targetEntity).playSpawnEffects();
 				
 				ItemStack drop;
@@ -137,7 +137,7 @@ public class BlockEffects
 			targetEntity = (Entity)iterator2.next();
 			if(targetEntity instanceof HostileEntity)
 			{				
-				targetEntity.remove();
+				targetEntity.remove(null);
 				((HostileEntity) targetEntity).playSpawnEffects();
 				world.spawnEntity(new ExperienceOrbEntity(world, pos.getX(), pos.getY()+1, pos.getZ(), 1));
 			}
@@ -160,7 +160,7 @@ public class BlockEffects
 			targetEntity = (Entity)iterator2.next();
 			if(targetEntity instanceof HostileEntity)
 			{
-				targetEntity.remove();
+				targetEntity.remove(null);
 				((HostileEntity) targetEntity).playSpawnEffects();
 			}
 		}

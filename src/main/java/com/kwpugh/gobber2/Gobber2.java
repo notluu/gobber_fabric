@@ -17,13 +17,9 @@ import me.sargunvohra.mcmods.autoconfig1u.serializer.JanksonConfigSerializer;
 import me.sargunvohra.mcmods.autoconfig1u.serializer.PartitioningSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.api.SlotTypeInfo;
-import top.theillusivec4.curios.api.SlotTypePreset;
 
 public class Gobber2 implements ModInitializer
 {
@@ -50,10 +46,10 @@ public class Gobber2 implements ModInitializer
     	LootTableInit.registerLoot();
     	PortalInit.registerPortal();
     	
-    	if(FabricLoader.getInstance().isModLoaded("curios"))
-    	{
-        	CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, SlotTypePreset.RING.getInfoBuilder().size(4).build());
-        	CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, SlotTypePreset.BELT.getInfoBuilder().size(2).build());    		
-    	}   	
+//    	if(FabricLoader.getInstance().isModLoaded("curios"))
+//    	{
+//        	CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, SlotTypePreset.RING.getInfoBuilder().size(4).build());
+//        	CuriosApi.enqueueSlotType(SlotTypeInfo.BuildScheme.REGISTER, SlotTypePreset.BELT.getInfoBuilder().size(2).build());    		
+//    	}   	
     }
 }

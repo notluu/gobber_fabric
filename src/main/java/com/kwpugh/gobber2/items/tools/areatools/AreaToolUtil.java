@@ -40,9 +40,9 @@ public class AreaToolUtil
             	
              	if(type == "hammer" && state.isToolRequired() && okToBreak)
             	{
-            		if(player.isUsingEffectiveTool(state) || block.isIn(TagInit.HAMMER_ADDITIONS))
+            		if(player.canHarvest(state) || state.isIn(TagInit.HAMMER_ADDITIONS))
             		{
-            			if(!block.hasBlockEntity() || 
+            			if(!state.hasBlockEntity() || 
                 				!(block instanceof BlockWithEntity) || 
                 				!(block instanceof BlockEntityProvider))
                 		{
@@ -52,11 +52,11 @@ public class AreaToolUtil
             		}          		
             	}
              	
-            	if(type == "excavator" && stack.isEffectiveOn(state)|| block.isIn(TagInit.EXCAVATOR_ADDITIONS))
+            	if(type == "excavator" && stack.isSuitableFor(state)|| state.isIn(TagInit.EXCAVATOR_ADDITIONS))
             	{
-            		if(player.isUsingEffectiveTool(state))
+            		if(player.canHarvest(state))
             		{
-            			if(!block.hasBlockEntity() || 
+            			if(!state.hasBlockEntity() || 
                 				!(block instanceof BlockWithEntity) || 
                 				!(block instanceof BlockEntityProvider))
                 		{

@@ -24,7 +24,7 @@ public abstract class PlayerEntityMixinAttack extends LivingEntity
 	}
 	
 	@Inject(at = @At("TAIL"), method = "attack")
-	public void attack(Entity target, CallbackInfo ci)
+	public void gobberAttack(Entity target, CallbackInfo ci)
 	{	
 		PlayerEntity player = (PlayerEntity) (Object) this;
 

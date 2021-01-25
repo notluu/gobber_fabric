@@ -14,20 +14,20 @@ public class MinerBlockTest
 	{
 		if (block == Blocks.STONE ||
 				block.isIn(TagInit.RING_MINER_ADDITIONS) ||
-				block.isIn(TagInit.cobblestone) ||
-				block.isIn(TagInit.dirt) ||
-				block.isIn(TagInit.netherrack) ||
-				block.isIn(TagInit.sand) ||
-				block.isIn(TagInit.sandstone) ||
-				block.isIn(TagInit.soul_ground) ||
-				block.isIn(TagInit.stone) ||
-				block.isIn(TagInit.end_stones) ||
+				block.isIn(TagInit.COBBLESTONE) ||
+				block.isIn(TagInit.DIRT) ||
+				block.isIn(TagInit.NETHERRACK) ||
+				block.isIn(TagInit.SAND) ||
+				block.isIn(TagInit.SANDSTONE) ||
+				block.isIn(TagInit.SOUL_GROUND) ||
+				block.isIn(TagInit.STONE) ||
+				block.isIn(TagInit.END_STONES) ||
 				block.isIn(BlockTags.BASE_STONE_OVERWORLD) ||
 				block.isIn(BlockTags.BASE_STONE_NETHER) ||							
 				block instanceof GravelBlock ||
 				block instanceof SandBlock ||
 				block == Blocks.DIRT || 
-				block == Blocks.GRASS_PATH || 
+				block == Blocks.DIRT_PATH || 
 				block == Blocks.SAND  || 
 				block == Blocks.RED_SAND  || 
 				block == Blocks.SANDSTONE || 

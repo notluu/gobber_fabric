@@ -1,26 +1,22 @@
 package com.kwpugh.gobber2.init;
 
 import com.kwpugh.gobber2.Gobber2;
-import com.kwpugh.gobber2.blocks.BlockDefender;
-import com.kwpugh.gobber2.blocks.BlockHealer;
-import com.kwpugh.gobber2.blocks.BlockMaturator;
-import com.kwpugh.gobber2.blocks.BlockProtector;
+
 import com.kwpugh.gobber2.blocks.LuckyBlock;
 import com.kwpugh.gobber2.blocks.ModGlass;
 import com.kwpugh.gobber2.blocks.OreEnd;
 import com.kwpugh.gobber2.blocks.OreGobber;
 import com.kwpugh.gobber2.blocks.OreNether;
-import com.kwpugh.gobber2.blocks.entities.BlockDefenderEntity;
-import com.kwpugh.gobber2.blocks.entities.BlockHealerEntity;
-import com.kwpugh.gobber2.blocks.entities.BlockMaturatorEntity;
-import com.kwpugh.gobber2.blocks.entities.BlockProtectorEntity;
+
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricMaterialBuilder;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
-import net.minecraft.block.MaterialColor;
+import net.minecraft.block.Blocks;
+import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.block.entity.SculkSensorBlockEntity;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
@@ -28,31 +24,32 @@ import net.minecraft.util.registry.Registry;
 
 public class BlockInit
 {
-	public static BlockEntityType<BlockHealerEntity> BLOCK_HEALER_ENTITY;
-	public static BlockEntityType<BlockProtectorEntity> BLOCK_PROTECTOR_ENTITY;
-	public static BlockEntityType<BlockDefenderEntity> BLOCK_DEFENDER_ENTITY;
-	public static BlockEntityType<BlockMaturatorEntity> BLOCK_MATURATOR_ENTITY;
+//	public static BlockEntityType<BlockHealerEntity> BLOCK_HEALER_ENTITY;
+//	public static BlockEntityType<BlockProtectorEntity> BLOCK_PROTECTOR_ENTITY;
+//	public static BlockEntityType<BlockDefenderEntity> BLOCK_DEFENDER_ENTITY;
+//	public static BlockEntityType<BlockMaturatorEntity> BLOCK_MATURATOR_ENTITY;
 	
-	public static final Block GOBBER2_LUCKY_BLOCK = new LuckyBlock(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
-	
-	public static final Block GOBBER2_ORE = new OreGobber(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().strength(2.0F, 2.0F));	
-	public static final Block GOBBER2_ORE_NETHER = new OreNether(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool().strength(2.0F, 2.0F));
-	public static final Block GOBBER2_ORE_END = new OreEnd(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 5).requiresTool().strength(2.0F, 2.0F));
-	
-	public static final Block GOBBER2_BLOCK = new Block(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
-	public static final Block GOBBER2_BLOCK_NETHER = new Block(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
-	public static final Block GOBBER2_BLOCK_END = new Block(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
 
-	public static final Block GOBBER2_GLASS = new ModGlass(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).luminance(15).nonOpaque().breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
-	public static final Block GOBBER2_GLASS_NETHER = new ModGlass(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).luminance(15).nonOpaque().breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
-	public static final Block GOBBER2_GLASS_END = new ModGlass(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).luminance(15).nonOpaque().breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
-	public static final Block CLEAR_GLASS = new ModGlass(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).luminance(15).nonOpaque().breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+	public static final Block GOBBER2_LUCKY_BLOCK = new LuckyBlock(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+	
+	public static final Block GOBBER2_ORE = new OreGobber(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 3).requiresTool().strength(2.0F, 2.0F));	
+	public static final Block GOBBER2_ORE_NETHER = new OreNether(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 4).requiresTool().strength(2.0F, 2.0F));
+	public static final Block GOBBER2_ORE_END = new OreEnd(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 5).requiresTool().strength(2.0F, 2.0F));
+	
+	public static final Block GOBBER2_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+	public static final Block GOBBER2_BLOCK_NETHER = new Block(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+	public static final Block GOBBER2_BLOCK_END = new Block(FabricBlockSettings.of(Material.STONE).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+
+	public static final Block GOBBER2_GLASS = new ModGlass(FabricBlockSettings.of(Material.STONE).luminance(15).nonOpaque().breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+	public static final Block GOBBER2_GLASS_NETHER = new ModGlass(FabricBlockSettings.of(Material.STONE).luminance(15).nonOpaque().breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+	public static final Block GOBBER2_GLASS_END = new ModGlass(FabricBlockSettings.of(Material.STONE).luminance(15).nonOpaque().breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+	public static final Block CLEAR_GLASS = new ModGlass(FabricBlockSettings.of(Material.STONE).luminance(15).nonOpaque().breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
 	
 	
-	public static final Block BLOCK_HEALER = new BlockHealer(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
-	public static final Block BLOCK_MATURATOR = new BlockMaturator(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));	
-	public static final Block BLOCK_DEFENDER = new BlockDefender(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
-	public static final Block BLOCK_PROTECTOR = new BlockProtector(FabricBlockSettings.of(new FabricMaterialBuilder(MaterialColor.STONE).build()).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+//	public static final Block BLOCK_HEALER = new BlockHealer(FabricBlockSettings.of(FabricBlockSettings(Material.STONE)).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+//	public static final Block BLOCK_MATURATOR = new BlockMaturator(FabricBlockSettings.of(FabricBlockSettings(Material.STONE)).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));	
+//	public static final Block BLOCK_DEFENDER = new BlockDefender(FabricBlockSettings.of(FabricBlockSettings(Material.STONE)).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
+//	public static final Block BLOCK_PROTECTOR = new BlockProtector(FabricBlockSettings.of(FabricBlockSettings(Material.STONE)).breakByTool(FabricToolTags.PICKAXES, 2).requiresTool().strength(2.0F, 2.0F));
 	
 	public static void registerBlocks()
 	{
@@ -72,13 +69,18 @@ public class BlockInit
 			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "gobber2_glass_end"), GOBBER2_GLASS_END);
 			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "clear_glass"), CLEAR_GLASS);	
 			
-			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_healer"), BLOCK_HEALER);
-			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_maturator"), BLOCK_MATURATOR);			
-			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_defender"), BLOCK_DEFENDER);
-			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_protector"), BLOCK_PROTECTOR);
+//			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_healer"), BLOCK_HEALER);
+//			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_maturator"), BLOCK_MATURATOR);			
+//			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_defender"), BLOCK_DEFENDER);
+//			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_protector"), BLOCK_PROTECTOR);
 		}
 	}
 	
+	private static Material FabricBlockSettings(Material stone) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public static void registerBlockItems()
 	{
 		{
@@ -97,19 +99,20 @@ public class BlockInit
 			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_glass_end"), new BlockItem(GOBBER2_GLASS_END, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
 			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "clear_glass"), new BlockItem(CLEAR_GLASS, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
 			
-			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_healer"), new BlockItem(BLOCK_HEALER, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
-			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_maturator"), new BlockItem(BLOCK_MATURATOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));			
-			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_defender"), new BlockItem(BLOCK_DEFENDER, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
-			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_protector"), new BlockItem(BLOCK_PROTECTOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
+//			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_healer"), new BlockItem(BLOCK_HEALER, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
+//			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_maturator"), new BlockItem(BLOCK_MATURATOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));			
+//			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_defender"), new BlockItem(BLOCK_DEFENDER, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
+//			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_protector"), new BlockItem(BLOCK_PROTECTOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
 		}
 	}
 	
 	public static void registerBlockEntities()
 	{
-		// Register block entities here
-		BLOCK_HEALER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_healer", BlockEntityType.Builder.create(BlockHealerEntity::new, BLOCK_HEALER).build(null));
-		BLOCK_MATURATOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_maturator", BlockEntityType.Builder.create(BlockMaturatorEntity::new, BLOCK_MATURATOR).build(null));
-		BLOCK_DEFENDER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_defender", BlockEntityType.Builder.create(BlockDefenderEntity::new, BLOCK_DEFENDER).build(null));
-		BLOCK_PROTECTOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_protector", BlockEntityType.Builder.create(BlockProtectorEntity::new, BLOCK_PROTECTOR).build(null));
+		// Register block entities here		
+
+//		BLOCK_HEALER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_healer", BlockEntityType.Builder.create(BlockHealerEntity::new, BLOCK_HEALER).build(null));
+//		BLOCK_MATURATOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_maturator", BlockEntityType.Builder.create(BlockMaturatorEntity::new, BLOCK_MATURATOR).build(null));
+//		BLOCK_DEFENDER_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_defender", BlockEntityType.Builder.create(BlockDefenderEntity::new, BLOCK_DEFENDER).build(null));
+//		BLOCK_PROTECTOR_ENTITY = Registry.register(Registry.BLOCK_ENTITY_TYPE, "gobber2:block_protector", BlockEntityType.Builder.create(BlockProtectorEntity::new, BLOCK_PROTECTOR).build(null));
 	}
 }

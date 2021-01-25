@@ -285,7 +285,7 @@ public class ModTreeAxe extends AxeItem
     	BlockState state = world.getBlockState(pos);  
         boolean isEffective = effectiveOn.contains(state.getBlock()) || effectiveMaterials.contains(state.getMaterial());
                 
-        if (player.isUsingEffectiveTool(state) && isEffective)
+        if (player.canHarvest(state) && isEffective)
         {     
             breakList.add(pos);
         }

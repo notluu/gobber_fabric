@@ -40,7 +40,7 @@ public abstract class ClientPlayerEntityMixinFallFlying extends AbstractClientPl
   }
 
   @Inject(method = "Lnet/minecraft/client/network/ClientPlayerEntity;tickMovement()V", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getEquippedStack(Lnet/minecraft/entity/EquipmentSlot;)Lnet/minecraft/item/ItemStack;"))
-  public void tickMovementMixin(CallbackInfo info) 
+  public void gobberTickMovement(CallbackInfo info) 
   {
     ItemStack itemStack = this.getEquippedStack(EquipmentSlot.CHEST);
     if (itemStack.getItem() == ItemInit.GOBBER2_CHESTPLATE_END && this.checkFallFlying()) 

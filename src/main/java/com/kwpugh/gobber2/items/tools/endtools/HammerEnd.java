@@ -38,7 +38,7 @@ public class HammerEnd extends ModHammer
 	@Override
     public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity playerIn)
     {
-        if(!playerIn.isSneaking() && playerIn.getMainHandStack().isEffectiveOn(world.getBlockState(pos)))
+        if(!playerIn.isSneaking() && playerIn.getMainHandStack().isSuitableFor(world.getBlockState(pos)))
     	{
         	obsidianFlag = (state.getBlock() == Blocks.OBSIDIAN || state.getBlock() == Blocks.CRYING_OBSIDIAN) ? true : false;
         	AreaToolUtil.attemptBreakNeighbors(world, playerIn, radius, "hammer", obsidianFlag);
@@ -48,9 +48,9 @@ public class HammerEnd extends ModHammer
     }
     
 	@Override
-	public boolean isEffectiveOn(BlockState state) 
+	public boolean isSuitableFor(BlockState state) 
 	{
-		if (Items.NETHERITE_PICKAXE.isEffectiveOn(state))
+		if (Items.NETHERITE_PICKAXE.isSuitableFor(state))
 		{
 			return true;
 		}

@@ -5,6 +5,7 @@ import java.util.List;
 import com.kwpugh.gobber2.Gobber2;
 import com.kwpugh.gobber2.world.Gobber2Dimension;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -37,15 +38,19 @@ public class RingAbove extends Item
 		RegistryKey<World> registryKey = world.getRegistryKey();
 		ItemStack stack = player.getStackInHand(hand);
 		
-		if (!world.isClient && !(registryKey == World.OVERWORLD || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY))
+		if (!world.isClient && !(registryKey == World.OVERWORLD || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY2))
 		{						
-			player.sendMessage((new TranslatableText("Does not work in this World!")), true);
+			player.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_above.tip5")), true);   // not in this world
 			return TypedActionResult.success(stack);
 		}
 						
-		if (!world.isClient && (registryKey == World.OVERWORLD || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY))
+		if (!world.isClient && (registryKey == World.OVERWORLD || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY2))
 		{
-			if(player.isSneaking())  // Teleports downward
+			ItemStack stack2 = player.getMainHandStack();	
+			boolean hasQuickUse = stack2.getEnchantments().toString().contains("quickuse");
+			
+			// Teleports downward while sneak + right-click
+			if(player.isSneaking())  
 			{
 				//Checking from bottom of world and working upward
 				double x = player.getX();
@@ -58,21 +63,34 @@ public class RingAbove extends Item
 				{
 		            y++;
 
-		            BlockPos groundPos = new BlockPos(x, y+2, z);
-		            if (!chunk.getBlockState(groundPos).getMaterial().equals(Material.AIR))
+		            BlockPos headPos = new BlockPos(x, y+1, z);
+		            if (chunk.getBlockState(headPos).getMaterial().equals(Material.AIR))
 		            {
-		                BlockPos legPos = new BlockPos(x, y+1, z);
+		            	//System.out.println("head material: " + chunk.getBlockState(headPos).getBlock() + " at: " + x + " " + y + " " + z);
+		            	
+		                BlockPos legPos = new BlockPos(x, y, z);
 		                if (chunk.getBlockState(legPos).getMaterial().equals(Material.AIR))
 		                {
-		                    BlockPos headPos = new BlockPos(x, y, z);
-		                    if (chunk.getBlockState(headPos).getMaterial().equals(Material.AIR))
-		                    {	                    	
+		                	//System.out.println("leg material: " + chunk.getBlockState(headPos).getBlock() + " at: " + x + " " + y + " " + z);
+		                	
+		                    BlockPos groundPos = new BlockPos(x, y-1, z);
+		                    if (     (!chunk.getBlockState(groundPos).getBlock().equals(Blocks.LAVA)) &&
+		                    		(chunk.getBlockState(groundPos).getMaterial().equals(Material.STONE) ||
+		                    		chunk.getBlockState(groundPos).getBlock().equals(Blocks.STONE) ||
+		                    		!chunk.getBlockState(legPos).getMaterial().equals(Material.AIR))   )
+		                    {	
+		                    	//System.out.println("ground state: " + chunk.getBlockState(headPos).getBlock() + " at: " + x + " " + y + " " + z);
+		                    	
 		                    	player.stopRiding();
 		                    	player.requestTeleport(x, y, z);
 		    	           		player.fallDistance = 0.0F;
 
 		    	           		world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
-		    	           		player.getItemCooldownManager().set(this, cooldown);
+		    	           		
+		    	           		if(!hasQuickUse)
+		    	           		{
+		    	           			player.getItemCooldownManager().set(this, cooldown);
+		    	           		}
 		    	           		
 		    	           		return TypedActionResult.success(stack);                     
 		                    }
@@ -80,9 +98,9 @@ public class RingAbove extends Item
 		            }
 		        }				
 			}
-			else
+			else  // teleport upward with right-click
 			{	
-				//Checking from top of world downward
+				//Checking from top of world downward 
 				double x = player.getX();
 				double y = 254;
 				double z = player.getZ();
@@ -94,7 +112,8 @@ public class RingAbove extends Item
 		            y--;
 
 		            BlockPos groundPos = new BlockPos(x, y-2, z);
-		            if (!chunk.getBlockState(groundPos).getMaterial().equals(Material.AIR))
+		            if (!chunk.getBlockState(groundPos).getMaterial().equals(Material.AIR) &&
+		            		!chunk.getBlockState(groundPos).getBlock().equals(Blocks.LAVA))
 		            {
 		                BlockPos legPos = new BlockPos(x, y-1, z);
 		                if (chunk.getBlockState(legPos).getMaterial().equals(Material.AIR))
@@ -107,7 +126,11 @@ public class RingAbove extends Item
 		    	           		player.fallDistance = 0.0F;
 
 		    	           		world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS, 1.0F, 1.0F);
-		    	           		player.getItemCooldownManager().set(this, cooldown);
+		    	           		
+		    	           		if(!hasQuickUse)
+		    	           		{
+		    	           			player.getItemCooldownManager().set(this, cooldown);
+		    	           		}
 		    	           		
 		    	           		return TypedActionResult.success(stack);                       
 		                    }

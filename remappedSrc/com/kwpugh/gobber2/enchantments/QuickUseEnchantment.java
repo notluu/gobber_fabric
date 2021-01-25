@@ -61,6 +61,7 @@ public class QuickUseEnchantment extends Enchantment
 	{
 		Item item = stack.getItem();
 		if(item == ItemInit.GOBBER2_RING_MINER ||
+				item == ItemInit.GOBBER2_RING_ABOVE ||
 				item == ItemInit.GOBBER2_RING_BLINK ||
 				item == ItemInit.GOBBER2_STAFF_SNIPER ||
 				item == ItemInit.GOBBER2_SWORD_SNIPER)

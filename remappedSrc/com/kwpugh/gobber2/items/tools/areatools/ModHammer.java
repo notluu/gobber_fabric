@@ -33,7 +33,7 @@ public class ModHammer extends PickaxeItem
     {
 		if(!world.isClient)
 		{
-		       if(!playerIn.isSneaking() && playerIn.getMainHandStack().isEffectiveOn(world.getBlockState(pos)))
+		       if(!playerIn.isSneaking() && playerIn.getMainHandStack().isSuitableFor(world.getBlockState(pos)))
 		        {
 		        	obsidianFlag = (state.getBlock() == Blocks.OBSIDIAN || state.getBlock() == Blocks.CRYING_OBSIDIAN) ? true : false;
 		        	AreaToolUtil.attemptBreakNeighbors(world, playerIn, radius, "hammer", obsidianFlag);
@@ -60,9 +60,9 @@ public class ModHammer extends PickaxeItem
 	}
 	   
 	@Override
-	public boolean isEffectiveOn(BlockState state) 
+	public boolean isSuitableFor(BlockState state) 
 	{
-		if (Items.DIAMOND_PICKAXE.isEffectiveOn(state))
+		if (Items.DIAMOND_PICKAXE.isSuitableFor(state))
 		{
 			return true;
 		}

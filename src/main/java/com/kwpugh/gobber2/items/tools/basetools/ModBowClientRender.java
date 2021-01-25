@@ -17,8 +17,8 @@ public class ModBowClientRender implements ClientModInitializer
 {
   @Override
   public void onInitializeClient() 
-  {
-    FabricModelPredicateProviderRegistry.register(ItemInit.GOBBER2_BOW, new Identifier("pull"), (stack, world, entity) -> 
+  {  
+    FabricModelPredicateProviderRegistry.register(ItemInit.GOBBER2_BOW, new Identifier("pull"), (stack, world, entity, i) -> 
     {
       if (entity == null) 
       {
@@ -32,14 +32,14 @@ public class ModBowClientRender implements ClientModInitializer
     });
     
     FabricModelPredicateProviderRegistry.register(ItemInit.GOBBER2_BOW, new Identifier("pulling"),
-        (stack, world, entity) -> 
+        (stack, world, entity, i) -> 
     	{
           return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F;
         });
   
     
     
-    FabricModelPredicateProviderRegistry.register(ItemInit.GOBBER2_BOW_NETHER, new Identifier("pull"), (stack, world, entity) -> 
+    FabricModelPredicateProviderRegistry.register(ItemInit.GOBBER2_BOW_NETHER, new Identifier("pull"), (stack, world, entity, i) -> 
     {
     	if (entity == null) 
     {
@@ -53,14 +53,14 @@ public class ModBowClientRender implements ClientModInitializer
     });
   
     FabricModelPredicateProviderRegistry.register(ItemInit.GOBBER2_BOW_NETHER, new Identifier("pulling"),
-      (stack, world, entity) -> 
+      (stack, world, entity, i) -> 
    	{
         return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F;
     });
     
     
 
-    FabricModelPredicateProviderRegistry.register(ItemInit.GOBBER2_BOW_END, new Identifier("pull"), (stack, world, entity) -> 
+    FabricModelPredicateProviderRegistry.register(ItemInit.GOBBER2_BOW_END, new Identifier("pull"), (stack, world, entity, i) -> 
     {
     	if (entity == null) 
     {
@@ -74,7 +74,7 @@ public class ModBowClientRender implements ClientModInitializer
     });
   
     FabricModelPredicateProviderRegistry.register(ItemInit.GOBBER2_BOW_END, new Identifier("pulling"),
-      (stack, world, entity) -> 
+      (stack, world, entity, i) -> 
    	{
         return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F;
     }); 

@@ -1,5 +1,6 @@
 package com.kwpugh.gobber2.items.tools.endtools;
 
+import com.kwpugh.gobber2.Gobber2;
 import com.kwpugh.gobber2.items.tools.basetools.ModPickaxe;
 
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,9 +15,14 @@ public class PickaxeEnd extends ModPickaxe
 		super(material, attackDamage, attackSpeed, settings);
 	}
 	
+	static boolean unbreakable = Gobber2.CONFIG.GENERAL.unbreakableEndTools;
+	
 	@Override
 	public void onCraft(ItemStack stack, World world, PlayerEntity player) 
 	{
-		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		if(unbreakable)
+		{
+			stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		}
 	}
 }

@@ -139,7 +139,7 @@ public class StaffEnsnarement extends Item
     	
     	stack.getOrCreateTag().put("captured_entity", entityTag);
     	stack.getOrCreateTag().putString("name", entity.getDisplayName().getString());
-    	entity.remove();
+    	entity.discard();
     	
     	return true;
     }

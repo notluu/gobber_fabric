@@ -65,7 +65,7 @@ public final class PlayerEquipUtil
     // Ring of Stealth in inventory
     public static boolean isPlayerPhantomFree(PlayerEntity player)
     { 	    
-		PlayerInventory inv = player.inventory;
+		PlayerInventory inv = player.getInventory();
 		int size = inv.size();
 		
 		//Is the ring in the player inventory?
@@ -84,7 +84,7 @@ public final class PlayerEquipUtil
     // Ring of Phoenix in inventory
     public static boolean isPlayerFireImmune(PlayerEntity player)
     { 	    
-		PlayerInventory inv = player.inventory;
+		PlayerInventory inv = player.getInventory();
 		int size = inv.size();
 		
 		//Is the ring in the player inventory?

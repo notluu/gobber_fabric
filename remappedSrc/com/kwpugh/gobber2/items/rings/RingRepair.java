@@ -3,6 +3,7 @@ package com.kwpugh.gobber2.items.rings;
 import java.util.List;
 
 import com.kwpugh.gobber2.Gobber2;
+import com.kwpugh.gobber2.init.TagInit;
 
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
@@ -39,7 +40,7 @@ public class RingRepair extends Item
 	    			{
 	    				if (!(stack2 == serverPlayer.getMainHandStack()))
 	    				{
-	    					if (stack2.isDamaged()) 
+	    					if (stack2.isDamaged() && !stack2.getItem().isIn(TagInit.RING_REPAIR_BLACKLIST)) 
 	    		    		{		    			   			
 	    		    			stack2.setDamage(stack2.getDamage() - 1);	    		
 	    		    			break;		                

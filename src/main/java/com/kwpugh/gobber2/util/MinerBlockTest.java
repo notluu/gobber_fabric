@@ -3,6 +3,7 @@ package com.kwpugh.gobber2.util;
 import com.kwpugh.gobber2.init.TagInit;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.GravelBlock;
 import net.minecraft.block.SandBlock;
@@ -10,24 +11,24 @@ import net.minecraft.tag.BlockTags;
 
 public class MinerBlockTest 
 {
-	public static boolean canBreak(Block block)
+	public static boolean canBreak(BlockState state, Block block)
 	{
 		if (block == Blocks.STONE ||
-				block.isIn(TagInit.RING_MINER_ADDITIONS) ||
-				block.isIn(TagInit.COBBLESTONE) ||
-				block.isIn(TagInit.DIRT) ||
-				block.isIn(TagInit.NETHERRACK) ||
-				block.isIn(TagInit.SAND) ||
-				block.isIn(TagInit.SANDSTONE) ||
-				block.isIn(TagInit.SOUL_GROUND) ||
-				block.isIn(TagInit.STONE) ||
-				block.isIn(TagInit.END_STONES) ||
-				block.isIn(BlockTags.BASE_STONE_OVERWORLD) ||
-				block.isIn(BlockTags.BASE_STONE_NETHER) ||							
+				state.isIn(TagInit.RING_MINER_ADDITIONS) ||
+				state.isIn(TagInit.COBBLESTONE) ||
+				state.isIn(TagInit.DIRT) ||
+				state.isIn(TagInit.NETHERRACK) ||
+				state.isIn(TagInit.SAND) ||
+				state.isIn(TagInit.SANDSTONE) ||
+				state.isIn(TagInit.SOUL_GROUND) ||
+				state.isIn(TagInit.STONE) ||
+				state.isIn(TagInit.END_STONES) ||
+				state.isIn(BlockTags.BASE_STONE_OVERWORLD) ||
+				state.isIn(BlockTags.BASE_STONE_NETHER) ||							
 				block instanceof GravelBlock ||
 				block instanceof SandBlock ||
 				block == Blocks.DIRT || 
-				block == Blocks.GRASS_PATH || 
+				block == Blocks.DIRT_PATH || 
 				block == Blocks.SAND  || 
 				block == Blocks.RED_SAND  || 
 				block == Blocks.SANDSTONE || 

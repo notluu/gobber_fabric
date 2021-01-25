@@ -59,7 +59,8 @@ public class RingAbove extends Item
 				
 				Chunk chunk = world.getChunk((int) player.getX() >> 4, (int)player.getZ() >> 4);
 
-				while (y < world.getHeight())
+				//while (y < world.getHeight())
+				while (y < 255)
 				{
 		            y++;
 

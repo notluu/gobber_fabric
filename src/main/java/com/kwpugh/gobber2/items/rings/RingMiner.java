@@ -9,6 +9,7 @@ import com.kwpugh.gobber2.util.MinerBlockTest;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -31,6 +32,7 @@ public class RingMiner extends Item
 	static boolean minerDelayBreak = Gobber2.CONFIG.GENERAL.ringMinerDelayedBreak;
 	
 	List<BlockPos> posList = new ArrayList<BlockPos>();
+	BlockState state;
 	Block block;
 	BlockPos pos;
 	BlockPos breakPos;
@@ -86,9 +88,10 @@ public class RingMiner extends Item
 					for (int z = minerRange; z >= -minerRange; z--)
 					{
 						pos = player.getBlockPos().add(x, y, z);
-						block = world.getBlockState(pos).getBlock();							
+						state = world.getBlockState(pos);
+						block = state.getBlock();							
 				
-						if(MinerBlockTest.canBreak(block))
+						if(MinerBlockTest.canBreak(state, block))
 						{
 							posList.add(pos);
 						}

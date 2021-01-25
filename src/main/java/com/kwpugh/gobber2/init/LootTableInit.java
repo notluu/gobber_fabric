@@ -10,9 +10,9 @@ import com.kwpugh.gobber2.Gobber2;
 import net.fabricmc.fabric.api.loot.v1.FabricLootPoolBuilder;
 import net.fabricmc.fabric.api.loot.v1.FabricLootSupplierBuilder;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
-import net.minecraft.loot.ConstantLootTableRange;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.util.Identifier;
 
 public class LootTableInit
@@ -27,7 +27,7 @@ public class LootTableInit
 		if(enable)
 		{
 			FabricLootPoolBuilder GOBBER_RING_RETURN = FabricLootPoolBuilder.builder()
-					.rolls(ConstantLootTableRange.create(1))
+					.rolls(ConstantLootNumberProvider.create(1))
 					.with(ItemEntry.builder(ItemInit.GOBBER2_RING_RETURN))
 					.withCondition(RandomChanceLootCondition.builder(lootChance).build());
 
@@ -40,7 +40,7 @@ public class LootTableInit
 
 
 			FabricLootPoolBuilder GOBBER_RING_TELEPORT = FabricLootPoolBuilder.builder()
-					.rolls(ConstantLootTableRange.create(1))
+					.rolls(ConstantLootNumberProvider.create(1))
 					.with(ItemEntry.builder(ItemInit.GOBBER2_RING_TELEPORT))
 					.withCondition(RandomChanceLootCondition.builder(lootChance).build());
 

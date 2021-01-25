@@ -33,18 +33,18 @@ public class RingRepair extends Item
 							
 			if(serverPlayer.age % 90 == 0) // create an delay interval
 			{					
-			    for(int i = 0; i < serverPlayer.inventory.size(); i++) 
+			    for(int i = 0; i < serverPlayer.getInventory().size(); i++) 
 		        {					    
-		    		ItemStack stack2 = serverPlayer.inventory.getStack(i);		
+		    		ItemStack stack2 = serverPlayer.getInventory().getStack(i);		
 	    			if(!stack2.isEmpty())
 	    			{
 	    				if (!(stack2 == serverPlayer.getMainHandStack()))
 	    				{
-	    					if (stack2.isDamaged() && !stack2.getItem().isIn(TagInit.RING_REPAIR_BLACKLIST)) 
-	    		    		{		    			   			
+//	    					if (stack2.isDamaged() && !stack2.getItem().isIn(TagInit.RING_REPAIR_BLACKLIST)) 
+//	    		    		{		    			   			
 	    		    			stack2.setDamage(stack2.getDamage() - 1);	    		
 	    		    			break;		                
-	    		    		}
+//	    		    		}
 	    				}
 	    			}    				    		
 		        }						

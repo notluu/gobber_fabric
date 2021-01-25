@@ -25,7 +25,7 @@ public abstract class MobEntityMixinCanTarget extends Entity
 	}
 	
 	@Inject(at = @At("RETURN"), method = "canTarget(Lnet/minecraft/entity/LivingEntity;)Z", cancellable = true)
-	public void canTarget(LivingEntity target, CallbackInfoReturnable<Boolean> cir)
+	public void gobberCanTarget(LivingEntity target, CallbackInfoReturnable<Boolean> cir)
 	{
 		MobEntity self = (MobEntity) (Object) this;
 		     

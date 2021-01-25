@@ -27,7 +27,7 @@ public abstract class LivingEntityMixinGlide extends Entity
   }
 
   @ModifyArg(method = "Lnet/minecraft/entity/LivingEntity;initAi()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;setFlag(IZ)V"), index = 1)
-  private boolean initAiMixin(boolean value) 
+  private boolean gobberInitAiMixin(boolean value) 
   {
     boolean bl = this.getFlag(7);
     LivingEntity livingEntity = (LivingEntity) (Object) this;

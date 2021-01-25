@@ -35,6 +35,7 @@ public class ExcavatorEnd extends ShovelItem
 
 	int radius = 1;
 	static boolean enable5x5 = Gobber2.CONFIG.GENERAL.enableEndExcavator5x5;
+	static boolean unbreakable = Gobber2.CONFIG.GENERAL.unbreakableEndTools;
 	
 	@Override
 	public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand)
@@ -62,7 +63,7 @@ public class ExcavatorEnd extends ShovelItem
 	}
 	
     @Override
-    public boolean isEffectiveOn(BlockState state)
+    public boolean isSuitableFor(BlockState state)
     {
         return EFFECTIVE_BLOCKS.contains(state.getBlock());
     }
@@ -70,7 +71,7 @@ public class ExcavatorEnd extends ShovelItem
     @Override
     public boolean canMine(BlockState state, World world, BlockPos pos, PlayerEntity playerIn)
     {
-        if(!playerIn.isSneaking() && playerIn.getMainHandStack().isEffectiveOn(world.getBlockState(pos)))
+        if(!playerIn.isSneaking() && playerIn.getMainHandStack().isSuitableFor(world.getBlockState(pos)))
     	{
         	AreaToolUtil.attemptBreakNeighbors(world, playerIn, radius, "excavator", false);
         }
@@ -80,13 +81,16 @@ public class ExcavatorEnd extends ShovelItem
 
     static
     {
-        EFFECTIVE_BLOCKS = Sets.newHashSet(Blocks.CLAY, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.FARMLAND, Blocks.GRASS_BLOCK, Blocks.GRAVEL, Blocks.MYCELIUM, Blocks.SAND, Blocks.RED_SAND, Blocks.SNOW_BLOCK, Blocks.SNOW, Blocks.SOUL_SAND, Blocks.GRASS_PATH, Blocks.WHITE_CONCRETE_POWDER, Blocks.ORANGE_CONCRETE_POWDER, Blocks.MAGENTA_CONCRETE_POWDER, Blocks.LIGHT_BLUE_CONCRETE_POWDER, Blocks.YELLOW_CONCRETE_POWDER, Blocks.LIME_CONCRETE_POWDER, Blocks.PINK_CONCRETE_POWDER, Blocks.GRAY_CONCRETE_POWDER, Blocks.LIGHT_GRAY_CONCRETE_POWDER, Blocks.CYAN_CONCRETE_POWDER, Blocks.PURPLE_CONCRETE_POWDER, Blocks.BLUE_CONCRETE_POWDER, Blocks.BROWN_CONCRETE_POWDER, Blocks.GREEN_CONCRETE_POWDER, Blocks.RED_CONCRETE_POWDER, Blocks.BLACK_CONCRETE_POWDER);
+        EFFECTIVE_BLOCKS = Sets.newHashSet(Blocks.CLAY, Blocks.DIRT, Blocks.COARSE_DIRT, Blocks.PODZOL, Blocks.FARMLAND, Blocks.GRASS_BLOCK, Blocks.GRAVEL, Blocks.MYCELIUM, Blocks.SAND, Blocks.RED_SAND, Blocks.SNOW_BLOCK, Blocks.SNOW, Blocks.SOUL_SAND, Blocks.DIRT_PATH, Blocks.WHITE_CONCRETE_POWDER, Blocks.ORANGE_CONCRETE_POWDER, Blocks.MAGENTA_CONCRETE_POWDER, Blocks.LIGHT_BLUE_CONCRETE_POWDER, Blocks.YELLOW_CONCRETE_POWDER, Blocks.LIME_CONCRETE_POWDER, Blocks.PINK_CONCRETE_POWDER, Blocks.GRAY_CONCRETE_POWDER, Blocks.LIGHT_GRAY_CONCRETE_POWDER, Blocks.CYAN_CONCRETE_POWDER, Blocks.PURPLE_CONCRETE_POWDER, Blocks.BLUE_CONCRETE_POWDER, Blocks.BROWN_CONCRETE_POWDER, Blocks.GREEN_CONCRETE_POWDER, Blocks.RED_CONCRETE_POWDER, Blocks.BLACK_CONCRETE_POWDER);
     }
 	
 	@Override
 	public void onCraft(ItemStack stack, World world, PlayerEntity player) 
 	{
-		stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		if(unbreakable)
+		{
+			stack.getOrCreateTag().putBoolean("Unbreakable", true);
+		}
 	}
 	
 	@Override

@@ -65,7 +65,7 @@ public class RingAttraction extends Item
 			}
 			
 			// Scan and collect XP orbs
-			List<Entity> entityXP = player.getServerWorld().getEntitiesByClass(ExperienceOrbEntity.class, player.getBoundingBox().expand(configRange), EntityPredicates.VALID_ENTITY);
+			List<ExperienceOrbEntity> entityXP = player.getServerWorld().getEntitiesByClass(ExperienceOrbEntity.class, player.getBoundingBox().expand(configRange), EntityPredicates.VALID_ENTITY);
 			for (Entity entityXPNearby : entityXP)
 			{		
 				entityXPNearby.onPlayerCollision(player);				

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.kwpugh.gobber2.Gobber2;
+import com.kwpugh.gobber2.world.Gobber2Dimension;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
@@ -59,13 +60,13 @@ public class RingExplorer extends Item
 					
 					if(i > 1 && i < 6)
 					{
-						serverPlayer.sendMessage((new TranslatableText("Still checking...")), true);
+						serverPlayer.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_explorer.tip2")), true);   // still checking
 					}
 					
 					//serverPlayer.sendMessage((new TranslatableText("Checking for a safe spot, please wait a moment")), true);
 					RegistryKey<World> registryKey = world.getRegistryKey();
 					
-					if(!(registryKey == World.OVERWORLD))
+					if(!(registryKey == World.OVERWORLD || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY2))
 					{
 						serverPlayer.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_explorer.tip3")), true);  //only in overworld
 						return TypedActionResult.success(stack);
@@ -121,15 +122,10 @@ public class RingExplorer extends Item
 			                    }
 			                }
 			            }
-			        }	
-			        
-					//player.sendMessage((new TranslatableText("Sorry, no spot found, try again after cooldown")), true);
-			        
-			        //return TypedActionResult.success(stack);	 
+			        }	 
 				}
 				
 				return TypedActionResult.success(stack);
-		
 			}
 
 			return TypedActionResult.success(stack);			

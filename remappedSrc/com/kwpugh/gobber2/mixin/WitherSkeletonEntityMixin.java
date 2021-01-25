@@ -29,7 +29,7 @@ public abstract class WitherSkeletonEntityMixin extends AbstractSkeletonEntity
 	}
 	
 	@Inject(at = @At("TAIL"), method = "dropEquipment")
-	protected void dropEquipment(DamageSource source, int lootingMultiplier, boolean allowDrops, CallbackInfo ci)
+	protected void gobberDropEquipment(DamageSource source, int lootingMultiplier, boolean allowDrops, CallbackInfo ci)
 	{
 		if(!world.isClient && (source.getAttacker() instanceof PlayerEntity))
 		{
