@@ -98,7 +98,7 @@ public class StaffEnsnarement extends Item
 	public ActionResult useOnBlock(ItemUsageContext context)
     {	  	
     	ItemStack stack = context.getStack();
-    	if(!(context.getWorld() instanceof ServerWorld)) return ActionResult.SUCCESS;;  
+    	if(!(context.getWorld() instanceof ServerWorld)) return ActionResult.SUCCESS;
     	if(!context.getWorld().isClient && stack.hasTag() && stack.getTag().contains("captured_entity"))
     	{
         	ServerWorld serverWorld = (ServerWorld) context.getWorld();

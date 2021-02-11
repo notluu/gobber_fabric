@@ -1,5 +1,8 @@
 package com.kwpugh.gobber2.mixin;
 
+import net.minecraft.entity.*;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -9,11 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.kwpugh.gobber2.world.Gobber2Dimension;
 
-import net.minecraft.entity.CrossbowUser;
-import net.minecraft.entity.EntityData;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.AbstractPiglinEntity;
@@ -29,7 +27,7 @@ import net.minecraft.world.World;
 @Mixin(PiglinBruteEntity.class)
 public abstract class PiglinBruteEntityMixin extends AbstractPiglinEntity implements CrossbowUser
 {
-	public PiglinBruteEntityMixin(EntityType<? extends AbstractPiglinEntity> entityType, World world) 
+	public PiglinBruteEntityMixin(EntityType<? extends AbstractPiglinEntity> entityType, World world)
 	{
 		super(entityType, world);
 	}
@@ -47,15 +45,25 @@ public abstract class PiglinBruteEntityMixin extends AbstractPiglinEntity implem
 	    	this.equipStack(EquipmentSlot.FEET, new ItemStack(Items.NETHERITE_BOOTS));	
 		}
     }
-	    	    
-    @Nullable
+
+	@Inject(method="damage",at=@At("HEAD"),cancellable = true)
+	public void gobberDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
+	{
+		RegistryKey<World> registryKey = world.getRegistryKey();
+		if(!this.world.isClient() && registryKey == Gobber2Dimension.GOBBER_WORLD_KEY2)
+		{
+			if((source.getAttacker() instanceof PlayerEntity) && source.isProjectile())
+			{
+				source.getAttacker().damage(DamageSource.GENERIC, 5.0F);
+			}
+		}
+	}
+
     @Inject(method="initialize",at=@At("TAIL"),cancellable = true)
-    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable CompoundTag entityTag, CallbackInfoReturnable<EntityData> cir) 
+    public void initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable CompoundTag entityTag, CallbackInfoReturnable<EntityData> cir)
     {
     	this.gobberApplyAttributeModifiers();
     	this.updateEnchantments(difficulty);
-    	
-    	return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
     }
     
     private void gobberApplyAttributeModifiers() 

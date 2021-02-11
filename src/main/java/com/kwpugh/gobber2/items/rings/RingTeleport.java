@@ -146,7 +146,9 @@ public class RingTeleport extends Item
 			if(registryKey == World.NETHER) tags.putString("dim", "The Nether"); 
 			if(registryKey == World.END) tags.putString("dim", "The End"); 
 			if(registryKey == Gobber2Dimension.GOBBER_WORLD_KEY) tags.putString("dim", "Mining World"); 
-			if(registryKey == Gobber2Dimension.GOBBER_WORLD_KEY2) tags.putString("dim", "Hunting World"); 
+			if(registryKey == Gobber2Dimension.GOBBER_WORLD_KEY2) tags.putString("dim", "Hunting World");
+			if(registryKey == Gobber2Dimension.GOBBER_WORLD_KEY3) tags.putString("dim", "Caving World");
+			if(registryKey == Gobber2Dimension.GOBBER_WORLD_KEY4) tags.putString("dim", "Nethering World");
 		}
 		
 		stack.setTag(tags);
@@ -164,7 +166,9 @@ public class RingTeleport extends Item
 		ServerWorld netherWorld = ((ServerWorld)world).getServer().getWorld(World.NETHER);
 		ServerWorld endWorld = ((ServerWorld)world).getServer().getWorld(World.END);
 		ServerWorld miningWorld = ((ServerWorld)world).getServer().getWorld(Gobber2Dimension.GOBBER_WORLD_KEY);	
-		ServerWorld huntingWorld = ((ServerWorld)world).getServer().getWorld(Gobber2Dimension.GOBBER_WORLD_KEY2);	
+		ServerWorld huntingWorld = ((ServerWorld)world).getServer().getWorld(Gobber2Dimension.GOBBER_WORLD_KEY2);
+		ServerWorld cavingWorld = ((ServerWorld)world).getServer().getWorld(Gobber2Dimension.GOBBER_WORLD_KEY3);
+		ServerWorld netheringWorld = ((ServerWorld)world).getServer().getWorld(Gobber2Dimension.GOBBER_WORLD_KEY4);
 		ServerPlayerEntity serverPlayer = (ServerPlayerEntity) player;	
 		ServerWorld destWorld = null;
 		boolean unknownWorld = false;
@@ -189,6 +193,14 @@ public class RingTeleport extends Item
 		else if((stack.getTag().getString("dim").contains("Hunting World")))
 		{
 			destWorld = huntingWorld;
+		}
+		else if((stack.getTag().getString("dim").contains("Caving World")))
+		{
+			destWorld = cavingWorld;
+		}
+		else if((stack.getTag().getString("dim").contains("Nethering World")))
+		{
+			destWorld = netheringWorld;
 		}
 		else
 		{

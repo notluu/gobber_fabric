@@ -36,11 +36,9 @@ public class MinerBlockTest
 				block == Blocks.GRASS_BLOCK ||
 				block == Blocks.COARSE_DIRT ||
 				block == Blocks.PODZOL ||
-				block == Blocks.MYCELIUM ||
 				block == Blocks.GRANITE || 
 				block == Blocks.ANDESITE || 
-				block == Blocks.DIORITE  || 
-				block == Blocks.DIORITE || 
+				block == Blocks.DIORITE  ||
 				block == Blocks.SOUL_SAND || 
 				block == Blocks.MOSSY_COBBLESTONE || 
 				block == Blocks.MOSSY_COBBLESTONE_SLAB || 

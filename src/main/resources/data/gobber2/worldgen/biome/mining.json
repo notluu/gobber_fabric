@@ -56,9 +56,7 @@
       "minecraft:patch_pumpkin",
       "minecraft:spring_lava"
     ],
-    [
-      "minecraft:freeze_top_layer"
-    ]
+    []
   ],
   "spawners": {
     "ambient": [

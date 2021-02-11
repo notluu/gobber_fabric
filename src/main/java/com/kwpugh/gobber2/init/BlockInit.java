@@ -28,6 +28,11 @@ import net.minecraft.util.registry.Registry;
 
 public class BlockInit
 {
+	static boolean enableHealer = Gobber2.CONFIG.GENERAL.enableHealer;
+	static boolean enableDefender = Gobber2.CONFIG.GENERAL.enableDefender;
+	static boolean enableProtector = Gobber2.CONFIG.GENERAL.enableProtector;
+	static boolean enableMaturator = Gobber2.CONFIG.GENERAL.enableMaturator;
+
 	public static BlockEntityType<BlockHealerEntity> BLOCK_HEALER_ENTITY;
 	public static BlockEntityType<BlockProtectorEntity> BLOCK_PROTECTOR_ENTITY;
 	public static BlockEntityType<BlockDefenderEntity> BLOCK_DEFENDER_ENTITY;
@@ -71,11 +76,26 @@ public class BlockInit
 			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "gobber2_glass_nether"), GOBBER2_GLASS_NETHER);
 			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "gobber2_glass_end"), GOBBER2_GLASS_END);
 			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "clear_glass"), CLEAR_GLASS);	
-			
-			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_healer"), BLOCK_HEALER);
-			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_maturator"), BLOCK_MATURATOR);			
-			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_defender"), BLOCK_DEFENDER);
-			Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_protector"), BLOCK_PROTECTOR);
+
+			if(enableHealer)
+			{
+				Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_healer"), BLOCK_HEALER);
+			}
+
+			if(enableMaturator)
+			{
+				Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_maturator"), BLOCK_MATURATOR);
+			}
+
+			if(enableDefender)
+			{
+				Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_defender"), BLOCK_DEFENDER);
+			}
+
+			if(enableProtector)
+			{
+				Registry.register(Registry.BLOCK, new Identifier(Gobber2.MOD_ID, "block_protector"), BLOCK_PROTECTOR);
+			}
 		}
 	}
 	
@@ -96,11 +116,26 @@ public class BlockInit
 			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_glass_nether"), new BlockItem(GOBBER2_GLASS_NETHER, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
 			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "gobber2_glass_end"), new BlockItem(GOBBER2_GLASS_END, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
 			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "clear_glass"), new BlockItem(CLEAR_GLASS, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
-			
-			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_healer"), new BlockItem(BLOCK_HEALER, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
-			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_maturator"), new BlockItem(BLOCK_MATURATOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));			
-			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_defender"), new BlockItem(BLOCK_DEFENDER, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
-			Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_protector"), new BlockItem(BLOCK_PROTECTOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
+
+			if(enableHealer)
+			{
+				Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_healer"), new BlockItem(BLOCK_HEALER, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
+			}
+
+			if(enableMaturator)
+			{
+				Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_maturator"), new BlockItem(BLOCK_MATURATOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
+			}
+
+			if(enableDefender)
+			{
+				Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_defender"), new BlockItem(BLOCK_DEFENDER, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
+			}
+
+			if(enableProtector)
+			{
+				Registry.register(Registry.ITEM, new Identifier(Gobber2.MOD_ID, "block_protector"), new BlockItem(BLOCK_PROTECTOR, new Item.Settings().group(Gobber2.GOBBER2_GROUP)));
+			}
 		}
 	}
 	

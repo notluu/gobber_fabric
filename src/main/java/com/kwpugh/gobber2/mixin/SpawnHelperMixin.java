@@ -1,6 +1,8 @@
 package com.kwpugh.gobber2.mixin;
 
+import net.minecraft.world.chunk.Chunk;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -19,10 +21,12 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
 @Mixin(SpawnHelper.class)
 public abstract class SpawnHelperMixin
 {
-    @Inject(at = @At(value = "RETURN"), method = "canSpawn(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/SpawnGroup;Lnet/minecraft/world/gen/StructureAccessor;Lnet/minecraft/world/gen/chunk/ChunkGenerator;Lnet/minecraft/world/biome/SpawnSettings$SpawnEntry;Lnet/minecraft/util/math/BlockPos$Mutable;D)Z", cancellable = true)
+	@Inject(at = @At(value = "RETURN"), method = "canSpawn(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/SpawnGroup;Lnet/minecraft/world/gen/StructureAccessor;Lnet/minecraft/world/gen/chunk/ChunkGenerator;Lnet/minecraft/world/biome/SpawnSettings$SpawnEntry;Lnet/minecraft/util/math/BlockPos$Mutable;D)Z", cancellable = true)
     private static void gobberCanSpawn(ServerWorld world, SpawnGroup group, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, SpawnSettings.SpawnEntry spawnEntry, BlockPos.Mutable pos, double squaredDistance, CallbackInfoReturnable<Boolean> ci) 
     {
-		for (BlockPos targetPos : BlockPos.iterateOutwards(pos, 12, 2, 12))
+    	if(world.isClient) return;
+
+		for (BlockPos targetPos : BlockPos.iterateOutwards(pos, 32, 2, 32))
 		{
 			BlockState blockstate = world.getBlockState(targetPos);
 			

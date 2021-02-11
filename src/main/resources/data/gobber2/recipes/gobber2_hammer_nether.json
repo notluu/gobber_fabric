@@ -3,7 +3,7 @@
     
     "pattern":
     [
-        "AAA",
+        "ACA",
         "ABA",
         " B "
     ],
@@ -17,6 +17,10 @@
         "B":
         {
             "item": "gobber2:gobber2_rod_nether"
+        },
+        "C":
+        {
+            "item": "gobber2:gobber2_block_nether"
         }
     },
     

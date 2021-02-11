@@ -1,5 +1,8 @@
 package com.kwpugh.gobber2.mixin;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,6 +22,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.World;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ZombieEntity.class)
 public abstract class ZombieEntityMixin extends MobEntity
@@ -40,7 +44,26 @@ public abstract class ZombieEntityMixin extends MobEntity
 	        this.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).addPersistentModifier(new EntityAttributeModifier("Gobber Movement Bonus", 0.05D, EntityAttributeModifier.Operation.ADDITION));
 		}     
     }
-    
+
+	@Inject(method="damage",at=@At("HEAD"),cancellable = true)
+	public void gobberDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir)
+	{
+		Entity self = (Entity) (Object) this;
+		if(self instanceof ZombieEntity)
+		{
+			ZombieEntity zombie = (ZombieEntity) self;
+		}
+
+		RegistryKey<World> registryKey = world.getRegistryKey();
+		if(!this.world.isClient() && registryKey == Gobber2Dimension.GOBBER_WORLD_KEY2)
+		{
+			if((source.getAttacker() instanceof PlayerEntity) && source.isProjectile())
+			{
+				source.getAttacker().damage(DamageSource.GENERIC, 5.0F);
+			}
+		}
+	}
+
     @Inject(method="initEquipment",at=@At("TAIL"),cancellable = true)
     private void gobberInitEquipment(LocalDifficulty difficulty, CallbackInfo ci)
     {    	

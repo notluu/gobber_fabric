@@ -2,6 +2,7 @@ package com.kwpugh.gobber2.items.rings;
 
 import java.util.List;
 
+import com.kwpugh.gobber2.util.PlayerSpecialAbilities;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffects;
@@ -38,53 +39,7 @@ public class RingCuring extends Item
 	{
 		ItemStack stack = player.getStackInHand(hand);
 
-		if (!world.isClient)
-		{
-			if(player.hasStatusEffect(StatusEffects.BLINDNESS) && player.isSneaking());
-			{
-				player.removeStatusEffect(StatusEffects.BLINDNESS);
-			}
-			
-			if(player.hasStatusEffect(StatusEffects.HUNGER) && player.isSneaking());
-			{
-				player.removeStatusEffect(StatusEffects.HUNGER);
-			}
-			
-			if(player.hasStatusEffect(StatusEffects.MINING_FATIGUE) && player.isSneaking());
-			{
-				player.removeStatusEffect(StatusEffects.MINING_FATIGUE);
-			}
-			
-			if(player.hasStatusEffect(StatusEffects.NAUSEA) && player.isSneaking());
-			{
-				player.removeStatusEffect(StatusEffects.NAUSEA);
-			}
-			
-			if(player.hasStatusEffect(StatusEffects.POISON) && player.isSneaking());
-			{
-				player.removeStatusEffect(StatusEffects.POISON);
-			}
-			
-			if(player.hasStatusEffect(StatusEffects.SLOWNESS) && player.isSneaking());
-			{
-				player.removeStatusEffect(StatusEffects.SLOWNESS);
-			}
-			
-			if(player.hasStatusEffect(StatusEffects.UNLUCK) && player.isSneaking());
-			{
-				player.removeStatusEffect(StatusEffects.UNLUCK);
-			}
-			
-			if(player.hasStatusEffect(StatusEffects.WEAKNESS) && player.isSneaking());
-			{
-				player.removeStatusEffect(StatusEffects.WEAKNESS);
-			}
-			
-			if(player.hasStatusEffect(StatusEffects.WITHER) && player.isSneaking());
-			{
-				player.removeStatusEffect(StatusEffects.WITHER);
-			}
-		}
+		PlayerSpecialAbilities.giveCuringEffect(world, player);
 
 		return TypedActionResult.success(stack);
 	}

@@ -10,6 +10,8 @@ public class Gobber2Dimension
 {
     public static final RegistryKey<World> GOBBER_WORLD_KEY = RegistryKey.of(Registry.DIMENSION, Gobber2.MOD_DIMENSION_ID);
     public static final RegistryKey<World> GOBBER_WORLD_KEY2 = RegistryKey.of(Registry.DIMENSION, Gobber2.MOD_DIMENSION2_ID);
+    public static final RegistryKey<World> GOBBER_WORLD_KEY3 = RegistryKey.of(Registry.DIMENSION, Gobber2.MOD_DIMENSION3_ID);
+    public static final RegistryKey<World> GOBBER_WORLD_KEY4 = RegistryKey.of(Registry.DIMENSION, Gobber2.MOD_DIMENSION4_ID);
 
     public static void setupDimension()
     {

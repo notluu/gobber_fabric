@@ -34,19 +34,7 @@ public class RingAirWalking extends Item
 	@Override
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected)
 	{
-	 	if(world.isClient) return;
-	
-		PlayerEntity player = (PlayerEntity)entity;
-        ItemStack equippedMain = player.getMainHandStack();
- 
-        if(stack == equippedMain)
-    	{
-			player.setNoGravity(true);
-		}
-		else
-		{
-			player.setNoGravity(false);
-		}       
+		//TBD
 	}
 	
 	@Override   

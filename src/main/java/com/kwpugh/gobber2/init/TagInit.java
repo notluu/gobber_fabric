@@ -23,7 +23,12 @@ public class TagInit
 	public static final Tag<Block> SOUL_GROUND = TagRegistry.block(new Identifier("c", "soul_ground"));
 	public static final Tag<Block> STONE = TagRegistry.block(new Identifier("c", "stone"));
 	public static final Tag<Block> END_STONES = TagRegistry.block(new Identifier("c", "end_stones"));
-	
+
+	// Fabric c tags used by the Staff of Clearing
+	public static final Tag<Block> FLOWERS = TagRegistry.block(new Identifier("c", "flowers"));
+	public static final Tag<Block> GRASS = TagRegistry.block(new Identifier("c", "grass"));
+	public static final Tag<Block> BUSHES = TagRegistry.block(new Identifier("c", "bushes"));
+
 	// Gobber tag for adding more blocks to Ring of the Miner breaking
 	public static final Tag<Block> RING_MINER_ADDITIONS = TagRegistry.block(new Identifier("gobber2", "ring_miner_additions"));
 	

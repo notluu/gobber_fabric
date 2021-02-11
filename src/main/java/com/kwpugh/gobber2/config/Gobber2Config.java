@@ -71,44 +71,113 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
  	    		+"\n***********************")	
 		public boolean enableMining = true;
 		public boolean enableHunting = true;
+		public boolean enableCaving = true;
+		public boolean enableNethering = true;
 
-		
+		@Comment("\n"
+				+"\n"
+				+ "***********************"
+				+"\nEnable-Disable Rings"
+				+"\n***********************")
+		public boolean enableRingAbove = true;
+		public boolean enableRingAirWalking = true;
+		public boolean enableRingAscent = true;
+		public boolean enableRingAttraction = true;
+		public boolean enableRingBlink = true;
+		public boolean enableRingCuring = true;
+		public boolean enableRingDismissal = true;
+		public boolean enableRingEnderchest = true;
+		public boolean enableRingExplorer = true;
+		public boolean enableRingFarmer = true;
+		public boolean enableRingHaste = true;
+		public boolean enableRingMiner = true;
+		public boolean enableRingPhoenix = true;
+		public boolean enableRingRepair = true;
+		public boolean enableRingReturn = true;
+		public boolean enableRingStealth = true;
+		public boolean enableRingSunshine = true;
+		public boolean enableRingSwiftness = true;
+		public boolean enableRingTeleport = true;
+		public boolean enableRingTraveler = true;
+		public boolean enableRingVision = true;
+		public boolean enableRingVoid = true;
+
+		@Comment("\n"
+				+"\n"
+				+ "***********************"
+				+"\nEnable-Disable Staffs"
+				+"\n***********************")
+		public boolean enableStaffClearing = true;
+		public boolean enableStaffEnsnarement = true;
+		public boolean enableStaffFarmer = true;
+		public boolean enableStaffNature = true;
+		public boolean enableStaffSniper = true;
+		public boolean enableStaffStars = true;
+		public boolean enableStaffTransformation = true;
+
+		@Comment("\n"
+				+"\n"
+				+ "***********************"
+				+"\nEnable-Disable Medallions"
+				+"\n***********************")
+		public boolean enableMedallionBreathing = true;
+		public boolean enableMedallionLesserHealing = true;
+		public boolean enableMedallionHealing = true;
+		public boolean enableMedallionGreaterHealing = true;
+		public boolean enableMedallionExp = true;
+		public boolean enableMedallionHero = true;
+		public boolean enableMedallionSea = true;
+
+		@Comment("\n"
+				+"\n"
+				+ "***********************"
+				+"\nEnable-Disable Blocks"
+				+"\n***********************")
+		public boolean enableHealer = true;
+		public boolean enableDefender = true;
+		public boolean enableProtector = true;
+		public boolean enableMaturator = true;
+
     	 @Comment("\n"
     			+"\n"
     	 		+ "***********************"
- 	    		+"\nRings"
- 	    		+"\n***********************") 
- 		public int ringAttractionRange = 8;
- 		public int ringMinerCooldown = 120;
- 		public int ringMinerRange = 5;
- 		public int ringMinerVerticalRange = 4;
- 		public boolean ringMinerDelayedBreak = false;
- 		public int ringBlinkDistance = 100;
- 		public int ringBlinkCooldown = 120;
- 		public int ringExplorerCooldown = 240;
- 		public int ringExplorerMin = 5000;
-		public int ringExplorerMax = 20000;
- 		public int ringFarmerRange = 10;
- 		public int ringFarmerInterval = 180;
- 		public int ringAboveCooldown = 120;
- 		public int ringRepairInterval = 120;
- 		public double ringDismissalRange = 8;
- 		public double ringDismissalVelocity = 0.2D;
- 		public double ringDismissalLift = 1.5D;
- 		public double ringTravelerLaunch = 3.0;
- 		public double ringTravelerCruising = 0.2;
+ 	    		+"\nRing Settings"
+ 	    		+"\n***********************")
+    	 public int ringAttractionRange = 8;
+ 		 public int ringMinerCooldown = 120;
+ 		 public int ringMinerRange = 5;
+ 		 public int ringMinerVerticalRange = 4;
+ 		 public boolean ringMinerDelayedBreak = false;
+ 		 public int ringBlinkDistance = 100;
+ 		 public int ringBlinkCooldown = 120;
+ 		 public int ringExplorerCooldown = 240;
+ 		 public int ringExplorerMin = 5000;
+		 public int ringExplorerMax = 20000;
+ 		 public int ringFarmerRange = 10;
+ 		 public int ringFarmerInterval = 180;
+ 		 public int ringAboveCooldown = 120;
+ 		 public int ringRepairInterval = 120;
+ 		 public double ringDismissalRange = 8;
+ 		 public double ringDismissalVelocity = 0.2D;
+ 		 public double ringDismissalLift = 1.5D;
+ 		 public double ringTravelerLaunch = 3.0;
+ 		 public double ringTravelerCruising = 0.2;
+
  		
  		 @Comment("\n"
  				+"\n"
  				+ "***********************"
-  	    		+"\nMedallions"
+  	    		+"\nMedallion Settings"
   	    		+"\n***********************") 
- 		public int medallionExpMultiplier = 5;
+ 		 public int medallionExpMultiplier = 5;
+ 		 public int medallionLesserHealingAmount = 1;
+		 public int medallionHealingAmount = 2;
+		 public int medallionGreaterHealingAmount = 3;
 		
  		 @Comment("\n"
  				+"\n"
  		 		+ "***********************"
-   	    		+"\nStaffs"
+   	    		+"\nStaff Settings"
    	    		+"\n***********************") 	 
  		public int staffTransformationDurability = 1025;
  		public int staffClearingRange = 11;
@@ -121,7 +190,7 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
  		@Comment("\n"
  				+"\n"
  				+ "***********************"
-	    		+"\nDefender"
+	    		+"\nDefender Settings"
 	    		+"\n***********************") 
  		public int defenseRadius = 16;
 		public int defenseLevel = 1;
@@ -129,7 +198,7 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
 		@Comment("\n"
 				+"\n"
 				+ "***********************"
- 	    		+"\nProtector"
+ 	    		+"\nProtector Settings"
  	    		+"\n***********************") 
 		public int attackRadius = 16;
 		public int damageAmount = 3;
@@ -137,7 +206,7 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
 		@Comment("\n"
 				+"\n"
 				+ "***********************"
- 	    		+"\nHealer"
+ 	    		+"\nHealer Settings"
  	    		+"\n***********************") 		
 		public int healthRadius = 16;
 		public int healthLevel = 0;
@@ -146,7 +215,7 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
 		@Comment("\n"
 				+"\n"
 				+ "***********************"
- 	    		+"\nGrowth"
+ 	    		+"\nMaturator Settings"
  	    		+"\n***********************") 	
 		public int growthInterval = 360;
 		public int growthRange = 16;
@@ -156,6 +225,7 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
 				+ "***********************"
  	    		+"\nTools"
  	    		+"\n***********************")	
+		public boolean enableSniperSowrd = true;
 		public int swordSniperCooldoown = 240;
 		public boolean enableEndHammer5x5 = true;
 		public boolean enableEndExcavator5x5 = true;
@@ -221,6 +291,7 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
 		public boolean enableNetherPerks = true;
 		public boolean enableEndPerks = true;
 		public boolean enablePhantomProtection = true;
+		public boolean enableDragonPerks = true;
 		
        	@Comment("\n"
     			+"\n"
@@ -254,9 +325,22 @@ public class Gobber2Config extends PartitioningSerializer.GlobalData
        	public int gobberEndDurabilityMultiplier = 100;
       	public int gobberEndArmorEnchantability = 30;
       	public float gobberEndToughness = 3.0F;
-      	public float gobberEndKnockbackResistance = 0.30F;  
-       	
-       	
+      	public float gobberEndKnockbackResistance = 0.30F;
+
+		@Comment("\n"
+				+"\n"
+				+"\n"
+				+"******************************"
+				+"\nDragon Armor Material Stats"
+				+"\n******************************")
+		public boolean enableFlight = true;
+		public boolean unbreakableDragonArmor = true;
+		public int gobberDragonDurabilityMultiplier = 100;
+		public int gobberDragonArmorEnchantability = 30;
+		public float gobberDragonToughness = 3.0F;
+		public float gobberDragonKnockbackResistance = 1.0F;
+		public int gobberDragonArmorHealingPoints = 4;
+
 		@Comment("\n"
 				+"\n"
 				+ "***********************"

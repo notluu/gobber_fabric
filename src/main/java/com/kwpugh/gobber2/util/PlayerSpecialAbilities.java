@@ -10,13 +10,12 @@ import net.minecraft.world.World;
 
 public class PlayerSpecialAbilities
 {
-	//Increases the player's food level to max on tick update, based on inputs
+	//Increases the player's health as long as it is less than max health
 	public static void giveHealing(World world, PlayerEntity player, ItemStack itemstack, int amount)
 	{
 		if(player.age % 180 == 0)
 		{
 			if(player.getHealth() < player.getMaxHealth())
-			//if(player.getHealth() < 20)
 			{
 				player.heal(amount);
 			}		
@@ -128,7 +127,58 @@ public class PlayerSpecialAbilities
 		
 		return;
 	}
-	
+
+	public static void giveCuringEffect(World world, PlayerEntity player)
+	{
+		if (!world.isClient)
+		{
+			if(player.hasStatusEffect(StatusEffects.BLINDNESS) && player.isSneaking());
+			{
+				player.removeStatusEffect(StatusEffects.BLINDNESS);
+			}
+
+			if(player.hasStatusEffect(StatusEffects.HUNGER) && player.isSneaking());
+			{
+				player.removeStatusEffect(StatusEffects.HUNGER);
+			}
+
+			if(player.hasStatusEffect(StatusEffects.MINING_FATIGUE) && player.isSneaking());
+			{
+				player.removeStatusEffect(StatusEffects.MINING_FATIGUE);
+			}
+
+			if(player.hasStatusEffect(StatusEffects.NAUSEA) && player.isSneaking());
+			{
+				player.removeStatusEffect(StatusEffects.NAUSEA);
+			}
+
+			if(player.hasStatusEffect(StatusEffects.POISON) && player.isSneaking());
+			{
+				player.removeStatusEffect(StatusEffects.POISON);
+			}
+
+			if(player.hasStatusEffect(StatusEffects.SLOWNESS) && player.isSneaking());
+			{
+				player.removeStatusEffect(StatusEffects.SLOWNESS);
+			}
+
+			if(player.hasStatusEffect(StatusEffects.UNLUCK) && player.isSneaking());
+			{
+				player.removeStatusEffect(StatusEffects.UNLUCK);
+			}
+
+			if(player.hasStatusEffect(StatusEffects.WEAKNESS) && player.isSneaking());
+			{
+				player.removeStatusEffect(StatusEffects.WEAKNESS);
+			}
+
+			if(player.hasStatusEffect(StatusEffects.WITHER) && player.isSneaking());
+			{
+				player.removeStatusEffect(StatusEffects.WITHER);
+			}
+		}
+	}
+
 	public static void giveWaterBreathing(World world, PlayerEntity player)
 	{
 		if(player.isSubmergedInWater())

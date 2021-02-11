@@ -3,7 +3,6 @@ package com.kwpugh.gobber2.items.staffs;
 import java.util.List;
 
 import com.kwpugh.pugh_lib.api.CustomRecipeRemainder;
-
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

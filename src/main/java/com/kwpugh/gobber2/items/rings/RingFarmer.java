@@ -2,6 +2,7 @@ package com.kwpugh.gobber2.items.rings;
 
 import java.util.List;
 
+import com.kwpugh.gobber2.Gobber2;
 import com.kwpugh.gobber2.util.GrowingUtil;
 
 import net.minecraft.client.item.TooltipContext;
@@ -21,6 +22,9 @@ public class RingFarmer extends Item
 		super(settings);
 	}
 
+	static int interval = Gobber2.CONFIG.GENERAL.ringFarmerInterval;
+	static int range = Gobber2.CONFIG.GENERAL.ringFarmerRange;
+
 	public void inventoryTick(ItemStack stack, World world, Entity entity, int par4, boolean par5)
     {      
     	if(!(entity instanceof PlayerEntity) || world.isClient)
@@ -35,7 +39,7 @@ public class RingFarmer extends Item
         {
         	if (!world.isClient)
         	{  
-        		GrowingUtil.growCrops(world, player, 180, 10);
+        		GrowingUtil.growCrops(world, player, interval, range);
         	}	
         }
     }

@@ -7,6 +7,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
 
 public final class PlayerEquipUtil
 {
@@ -47,8 +48,28 @@ public final class PlayerEquipUtil
     	}
     	
     	return false;
-    } 
-    
+    }
+
+    // Wearing full Dragon Armor
+	public static boolean isPlayerWearingDragonArmor(PlayerEntity player)
+	{
+			ItemStack head = player.getEquippedStack(EquipmentSlot.HEAD);
+			ItemStack chest = player.getEquippedStack(EquipmentSlot.CHEST);
+			ItemStack legs = player.getEquippedStack(EquipmentSlot.LEGS);
+			ItemStack feet = player.getEquippedStack(EquipmentSlot.FEET);
+
+			//Full Set
+			if(		(head.getItem() == ItemInit.GOBBER2_HELMET_DRAGON &&
+					chest.getItem() == ItemInit.GOBBER2_CHESTPLATE_DRAGON &&
+					legs.getItem() == ItemInit.GOBBER2_LEGGINGS_DRAGON &&
+					feet.getItem() == ItemInit.GOBBER2_BOOTS_DRAGON)     )
+			{
+				return true;
+			}
+
+		return false;
+	}
+
 	//Holding the Ring of Stealth
     public static boolean isPlayerGotStleath(PlayerEntity player)
     {
@@ -61,8 +82,21 @@ public final class PlayerEquipUtil
 	   		
 	     return false;
     }
-    
-    // Ring of Stealth in inventory
+
+	//Holding the Ring of Air Walking
+	public static boolean isPlayerGotAirWalking(ServerPlayerEntity player)
+	{
+		ItemStack mainHand = player.getMainHandStack();
+
+		if(mainHand.getItem() == ItemInit.GOBBER2_RING_AIRWALKING)
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	// Ring of Stealth in inventory
     public static boolean isPlayerPhantomFree(PlayerEntity player)
     { 	    
 		PlayerInventory inv = player.inventory;

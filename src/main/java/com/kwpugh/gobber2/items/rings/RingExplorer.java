@@ -66,7 +66,7 @@ public class RingExplorer extends Item
 					//serverPlayer.sendMessage((new TranslatableText("Checking for a safe spot, please wait a moment")), true);
 					RegistryKey<World> registryKey = world.getRegistryKey();
 					
-					if(!(registryKey == World.OVERWORLD || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY2))
+					if(  !(registryKey == World.OVERWORLD || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY || registryKey == Gobber2Dimension.GOBBER_WORLD_KEY2) )
 					{
 						serverPlayer.sendMessage((new TranslatableText("item.gobber2.gobber2_ring_explorer.tip3")), true);  //only in overworld
 						return TypedActionResult.success(stack);

@@ -1,7 +1,9 @@
 package com.kwpugh.gobber2.mixin;
 
+import net.minecraft.entity.ai.brain.Brain;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -29,7 +31,9 @@ import net.minecraft.world.World;
 @Mixin(PiglinEntity.class)
 public abstract class PiglinEntityMixin extends AbstractPiglinEntity implements CrossbowUser
 {
-	public PiglinEntityMixin(EntityType<? extends AbstractPiglinEntity> entityType, World world) 
+	@Shadow public abstract Brain<PiglinEntity> getBrain();
+
+	public PiglinEntityMixin(EntityType<? extends AbstractPiglinEntity> entityType, World world)
 	{
 		super(entityType, world);
 	}
@@ -44,18 +48,15 @@ public abstract class PiglinEntityMixin extends AbstractPiglinEntity implements 
 	    	this.equipStack(EquipmentSlot.HEAD, new ItemStack(Items.GOLDEN_HELMET));
 	    	this.equipStack(EquipmentSlot.CHEST, new ItemStack(Items.GOLDEN_CHESTPLATE));
 	    	this.equipStack(EquipmentSlot.LEGS, new ItemStack(Items.GOLDEN_LEGGINGS));
-	    	this.equipStack(EquipmentSlot.FEET, new ItemStack(Items.GOLDEN_BOOTS));	
+	    	this.equipStack(EquipmentSlot.FEET, new ItemStack(Items.GOLDEN_BOOTS));
 		}
     }
 	    	    
-    @Nullable
     @Inject(method="initialize",at=@At("TAIL"),cancellable = true)
-    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable CompoundTag entityTag, CallbackInfoReturnable<EntityData> cir) 
+    public void initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason, @Nullable EntityData entityData, @Nullable CompoundTag entityTag, CallbackInfoReturnable<EntityData> cir)
     {
     	this.gobberApplyAttributeModifiers();
     	this.updateEnchantments(difficulty);
-    	
-    	return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
     }
     
     private void gobberApplyAttributeModifiers() 

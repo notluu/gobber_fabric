@@ -21,8 +21,11 @@
     "PiglinEntityMixin",
     "PiglinBruteEntityMixin",
     "VexEntityMixin",
+    "AbstractSkeletonEntityMixin",
     "EndermanEntityMixin",
-    "PlayerEntityMixinSolidFooting"
+    "PlayerEntityMixinSolidFooting",
+    "PlayerEntityMixinAirWalking",
+    "PlayerEntityMixinArmor"
   ],
   "client": [
   	"ClientPlayerEntityMixinFallFlying"

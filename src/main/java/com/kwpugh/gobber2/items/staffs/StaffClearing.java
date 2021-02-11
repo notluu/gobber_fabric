@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.kwpugh.gobber2.Gobber2;
 
+import com.kwpugh.gobber2.init.TagInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerBlock;
@@ -63,7 +64,10 @@ public class StaffClearing extends Item
 								block == Blocks.DEAD_BUSH || 
 								block == Blocks.TALL_GRASS || 
 								block == Blocks.FERN || 
-								block == Blocks.LARGE_FERN || 
+								block == Blocks.LARGE_FERN ||
+								block.isIn(TagInit.FLOWERS) ||
+								block.isIn(TagInit.BUSHES) ||
+								block.isIn(TagInit.GRASS) ||
 								block instanceof MushroomBlock || 
 								block instanceof FlowerBlock ||
 								block instanceof TallFlowerBlock)
